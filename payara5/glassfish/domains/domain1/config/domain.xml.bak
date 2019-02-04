@@ -142,6 +142,7 @@
       </web-container>
       <rest-config></rest-config>
       <microprofile-config></microprofile-config>
+      <environment-warning-configuration></environment-warning-configuration>
       <diagnostic-service></diagnostic-service>
       <security-service>
         <auth-realm classname="com.sun.enterprise.security.auth.realm.file.FileRealm" name="admin-realm">
@@ -513,7 +514,7 @@
   <deployment-groups></deployment-groups>
   <clusters></clusters>
   <applications>
-    <application deployment-time="6442" context-root="/JEA" object-type="user" name="JEA" location="${com.sun.aas.instanceRootURI}/applications/JEA/" time-deployed="1549271574722">
+    <application deployment-time="3811" context-root="/JEA" object-type="user" name="JEA" location="${com.sun.aas.instanceRootURI}/applications/JEA/" time-deployed="1549275165696">
       <property name="archiveType" value="war"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
       <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/JEA/JEA.war"></property>

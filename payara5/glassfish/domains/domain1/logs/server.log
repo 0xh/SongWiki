@@ -785,3 +785,434 @@ Address: /145.93.136.128:4900 UUID: 112325ad-c58d-43da-8917-7fc13afdaacb Lite: f
 [2019-02-04T10:23:34.418+0100] [Payara 5.184] [INFO] [] [] [tid: _ThreadID=234 _ThreadName=RunLevelControllerThread-1549272214046] [timeMillis: 1549272214418] [levelValue: 800] [[
   JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool]]]
 
+[2019-02-04T11:01:17.058+0100] [] [INFO] [NCLS-GFLAUNCHER-00005] [javax.enterprise.launcher] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1549274477058] [levelValue: 800] [[
+  JVM invocation command line:
+C:\Program Files\Java\jdk1.8.0_201\bin\java.exe
+-cp
+D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/modules/glassfish.jar
+-XX:+UnlockDiagnosticVMOptions
+-XX:NewRatio=2
+-Xmx512m
+-Xbootclasspath/p:D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/lib/grizzly-npn-bootstrap-1.8.1.jar
+-javaagent:D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/lib/monitor/flashlight-agent.jar
+-client
+-Djavax.xml.accessExternalSchema=all
+-Djavax.net.ssl.trustStore=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/cacerts.jks
+-Djdk.tls.rejectClientInitiatedRenegotiation=true
+-Djdk.corba.allowOutputStreamSubclass=true
+-Dfelix.fileinstall.dir=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/modules/autostart/
+-Dorg.glassfish.additionalOSGiBundlesToStart=org.apache.felix.shell,org.apache.felix.gogo.runtime,org.apache.felix.gogo.shell,org.apache.felix.gogo.command,org.apache.felix.shell.remote,org.apache.felix.fileinstall
+-Dcom.sun.aas.installRoot=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish
+-Dfelix.fileinstall.poll=5000
+-Djava.endorsed.dirs=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/modules/endorsed;D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/lib/endorsed
+-Djava.security.policy=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/server.policy
+-Dosgi.shell.telnet.maxconn=1
+-Dfelix.fileinstall.bundles.startTransient=true
+-Dcom.sun.enterprise.config.config_environment_factory_class=com.sun.enterprise.config.serverbeans.AppserverConfigEnvironmentFactory
+-Dfelix.fileinstall.log.level=2
+-Djavax.net.ssl.keyStore=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/keystore.jks
+-Djava.security.auth.login.config=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/login.conf
+-Dfelix.fileinstall.disableConfigSave=false
+-Dorg.glassfish.grizzly.DEFAULT_MEMORY_MANAGER=org.glassfish.grizzly.memory.HeapMemoryManager
+-Dfelix.fileinstall.bundles.new.start=true
+-Dcom.sun.aas.instanceRoot=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1
+-Dosgi.shell.telnet.port=6666
+-Dgosh.args=--nointeractive
+-Dcom.sun.enterprise.security.httpsOutboundKeyAlias=s1as
+-Dorg.jboss.weld.serialization.beanIdentifierIndexOptimization=false
+-Dosgi.shell.telnet.ip=127.0.0.1
+-DANTLR_USE_DIRECT_CLASS_LOADING=true
+-Djava.awt.headless=true
+-Dcom.ctc.wstx.returnNullForDefaultNamespace=true
+-Djava.ext.dirs=C:\Program Files\Java\jre1.8.0_201/lib/ext;C:\Program Files\Java\jre1.8.0_201/jre/lib/ext;D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/lib/ext
+-Djdbc.drivers=org.apache.derby.jdbc.ClientDriver
+-Dorg.glassfish.grizzly.nio.DefaultSelectorHandler.force-selector-spin-detection=true
+-Djava.library.path=D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/lib;C:/Program Files (x86)/Common Files/Oracle/Java/javapath;C:/Windows/Sun/Java/bin;C:/Windows/System32;C:/Windows;C:/ProgramData/DockerDesktop/version-bin;C:/Program Files/Docker/Docker/resources/bin;C:/Windows/System32/wbem;C:/Windows/System32/WindowsPowerShell/v1.0;C:/Windows/System32/OpenSSH;C:/Program Files/Git/cmd;C:/Program Files/nodejs;C:/Program Files/OpenSSL-Win64/bin;C:/Users/Martijn/AppData/Local/Microsoft/WindowsApps;C:/Users/Martijn/AppData/Local/Programs/Microsoft VS Code/bin;C:/Users/Martijn/AppData/Roaming/npm;D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/bin
+com.sun.enterprise.glassfish.bootstrap.ASMain
+-upgrade
+false
+-domaindir
+D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/domains/domain1
+-read-stdin
+true
+-asadmin-args
+--host,,,localhost,,,--port,,,4848,,,--secure=false,,,--terse=false,,,--echo=false,,,--interactive=false,,,start-domain,,,--verbose=false,,,--watchdog=false,,,--debug=false,,,--domaindir,,,D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains,,,domain1
+-domainname
+domain1
+-instancename
+server
+-type
+DAS
+-verbose
+false
+-asadmin-classpath
+D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/lib/client/appserver-cli.jar
+-debug
+false
+-asadmin-classname
+com.sun.enterprise.admin.cli.AdminMain
+-watchdog
+false]]
+
+[2019-02-04T11:01:21.007+0100] [Payara 5.184] [INFO] [NCLS-LOGGING-00009] [javax.enterprise.logging] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549274480830] [timeMillis: 1549274481007] [levelValue: 800] [[
+  Running Payara Version: Payara Server  5.184 #badassfish (build 89)]]
+
+[2019-02-04T11:01:21.011+0100] [Payara 5.184] [INFO] [NCLS-LOGGING-00010] [javax.enterprise.logging] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549274480830] [timeMillis: 1549274481011] [levelValue: 800] [[
+  Server log file is using Formatter class: com.sun.enterprise.server.logging.ODLLogFormatter]]
+
+[2019-02-04T11:01:21.393+0100] [Payara 5.184] [INFO] [] [org.glassfish.ha.store.spi.BackingStoreFactoryRegistry] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549274480830] [timeMillis: 1549274481393] [levelValue: 800] [[
+  Registered fish.payara.ha.hazelcast.store.HazelcastBackingStoreFactoryProxy for persistence-type = hazelcast in BackingStoreFactoryRegistry]]
+
+[2019-02-04T11:01:21.733+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549274480828] [timeMillis: 1549274481733] [levelValue: 800] [[
+  Network Listener http-listener-1 started in: 25ms - bound to [/0.0.0.0:8080]]]
+
+[2019-02-04T11:01:21.764+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549274480828] [timeMillis: 1549274481764] [levelValue: 800] [[
+  Network Listener http-listener-2 started in: 4ms - bound to [/0.0.0.0:8181]]]
+
+[2019-02-04T11:01:21.783+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549274480828] [timeMillis: 1549274481783] [levelValue: 800] [[
+  Network Listener admin-listener started in: 3ms - bound to [/0.0.0.0:4848]]]
+
+[2019-02-04T11:01:21.786+0100] [Payara 5.184] [INFO] [NCLS-CORE-00087] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549274480828] [timeMillis: 1549274481786] [levelValue: 800] [[
+  Grizzly 2.4.3 started in: 454ms - bound to [http-listener-1:8080, http-listener-2:8181, admin-listener:4848]]]
+
+[2019-02-04T11:01:21.872+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549274480830] [timeMillis: 1549274481872] [levelValue: 800] [[
+  Network Listener iiop-service started in: 7ms - bound to [/0.0.0.0:3700]]]
+
+[2019-02-04T11:01:25.898+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549274480838] [timeMillis: 1549274485898] [levelValue: 800] [[
+  Hazelcast Instance Bound to JNDI at payara/Hazelcast]]
+
+[2019-02-04T11:01:25.898+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549274480838] [timeMillis: 1549274485898] [levelValue: 800] [[
+  JSR107 Caching Provider Bound to JNDI at payara/CachingProvider]]
+
+[2019-02-04T11:01:25.898+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549274480838] [timeMillis: 1549274485898] [levelValue: 800] [[
+  JSR107 Default Cache Manager Bound to JNDI at payara/CacheManager]]
+
+[2019-02-04T11:01:25.904+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.cluster.PayaraCluster] [tid: _ThreadID=105 _ThreadName=Executor-Service-2] [timeMillis: 1549274485904] [levelValue: 800] [[
+  Data Grid Status 
+Payara Data Grid State: DG Version: 35 DG Size: 1
+Instances: {
+Address: /145.93.136.128:4900 UUID: 79688c78-2f85-4c86-8abf-a12e5265e0ea Lite: false This: true Name: server Group: server-config
+}]]
+
+[2019-02-04T11:01:25.905+0100] [Payara 5.184] [INFO] [NCLS-CORE-00017] [javax.enterprise.system.core] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1549274485905] [levelValue: 800] [[
+  Payara Server  5.184 #badassfish (89) startup time : Felix (3,262ms), startup services(5,083ms), total(8,345ms)]]
+
+[2019-02-04T11:01:25.917+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.notification.NotificationService] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1549274485917] [levelValue: 800] [[
+  Payara Notification Service bootstrapped with configuration: NotificationExecutionOptions{enabled=true, notifierConfigurationExecutionOptionsList={LOG=LogNotifierConfigurationExecutionOptions{useSeparateLogFile=false} NotifierConfigurationExecutionOptions{notifierType=LOG, enabled=true, noisy=true}}}]]
+
+[2019-02-04T11:01:26.209+0100] [Payara 5.184] [INFO] [] [org.hibernate.validator.internal.util.Version] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274486209] [levelValue: 800] [[
+  HV000001: Hibernate Validator 6.0.12.Final]]
+
+[2019-02-04T11:01:26.394+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549274480838] [timeMillis: 1549274486394] [levelValue: 800] [[
+  Network Listener JMS_PROXY_default_JMS_host started in: 16ms - bound to [/0.0.0.0:7676]]]
+
+[2019-02-04T11:01:26.473+0100] [Payara 5.184] [INFO] [NCLS-JMX-00005] [javax.enterprise.system.jmx] [tid: _ThreadID=119 _ThreadName=Thread-11] [timeMillis: 1549274486473] [levelValue: 800] [[
+  JMXStartupService has started JMXConnector on JMXService URL service:jmx:rmi://0.0.0.0:8686/jndi/rmi://0.0.0.0:8686/jmxrmi]]
+
+[2019-02-04T11:01:28.225+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01002] [javax.enterprise.system.core.security] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488225] [levelValue: 800] [[
+  Java security manager is disabled.]]
+
+[2019-02-04T11:01:28.226+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01010] [javax.enterprise.system.core.security] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488226] [levelValue: 800] [[
+  Entering Security Startup Service.]]
+
+[2019-02-04T11:01:28.229+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01143] [javax.enterprise.system.core.security] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488229] [levelValue: 800] [[
+  Loading policy provider com.sun.enterprise.security.provider.PolicyWrapper.]]
+
+[2019-02-04T11:01:28.341+0100] [Payara 5.184] [INFO] [] [javax.enterprise.resource.corba.org.glassfish.enterprise.iiop.api] [tid: _ThreadID=117 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549274488341] [levelValue: 800] [[
+  GlassFishORBFactory service initialized.]]
+
+[2019-02-04T11:01:28.351+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01011] [javax.enterprise.system.core.security] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488351] [levelValue: 800] [[
+  Security Service(s) started successfully.]]
+
+[2019-02-04T11:01:28.625+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488625] [levelValue: 800] [[
+  Created HTTP listener http-listener-1 on host/port 0.0.0.0:8080]]
+
+[2019-02-04T11:01:28.632+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488632] [levelValue: 800] [[
+  Created HTTP listener http-listener-2 on host/port 0.0.0.0:8181]]
+
+[2019-02-04T11:01:28.634+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488634] [levelValue: 800] [[
+  Created HTTP listener admin-listener on host/port 0.0.0.0:4848]]
+
+[2019-02-04T11:01:28.663+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00200] [javax.enterprise.web] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488663] [levelValue: 800] [[
+  Created virtual server server]]
+
+[2019-02-04T11:01:28.667+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00200] [javax.enterprise.web] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488667] [levelValue: 800] [[
+  Created virtual server __asadmin]]
+
+[2019-02-04T11:01:28.873+0100] [Payara 5.184] [INFO] [AS-WEB-CORE-00306] [javax.enterprise.web.core] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488873] [levelValue: 800] [[
+  Setting JAAS app name glassfish-web]]
+
+[2019-02-04T11:01:28.874+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00201] [javax.enterprise.web] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274488874] [levelValue: 800] [[
+  Virtual server server loaded default web module ]]
+
+[2019-02-04T11:01:30.032+0100] [Payara 5.184] [INFO] [NCLS-REST-00001] [javax.enterprise.admin.rest] [tid: _ThreadID=117 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549274490032] [levelValue: 800] [[
+  Listening to REST requests at context: /management/domain.]]
+
+[2019-02-04T11:01:30.826+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00172] [javax.enterprise.web] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274490826] [levelValue: 800] [[
+  Loading application [JEA] at [/JEA]]]
+
+[2019-02-04T11:01:31.041+0100] [Payara 5.184] [INFO] [] [javax.enterprise.system.core] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549274491041] [levelValue: 800] [[
+  JEA was successfully deployed in 4,044 milliseconds.]]
+
+[2019-02-04T11:01:31.241+0100] [Payara 5.184] [INFO] [NCLS-CORE-00022] [javax.enterprise.system.core] [tid: _ThreadID=141 _ThreadName=Thread-13] [timeMillis: 1549274491241] [levelValue: 800] [[
+  Loading application __admingui done in 1,079 ms]]
+
+[2019-02-04T11:01:32.862+0100] [Payara 5.184] [INFO] [jsf.config.listener.version] [javax.enterprise.resource.webcontainer.jsf.config] [tid: _ThreadID=141 _ThreadName=Thread-13] [timeMillis: 1549274492862] [levelValue: 800] [[
+  Initializing Mojarra 2.3.3.99.payara-p5 for context '']]
+
+[2019-02-04T11:01:34.603+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00172] [javax.enterprise.web] [tid: _ThreadID=141 _ThreadName=Thread-13] [timeMillis: 1549274494603] [levelValue: 800] [[
+  Loading application [__admingui] at [/]]]
+
+[2019-02-04T11:02:16.962+0100] [Payara 5.184] [INFO] [] [javax.enterprise.system.container.web.com.sun.web.security] [tid: _ThreadID=117 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549274536962] [levelValue: 800] [[
+  Context path from ServletContext:  differs from path from bundle: /]]
+
+[2019-02-04T11:02:19.656+0100] [Payara 5.184] [INFO] [] [org.glassfish.admingui] [tid: _ThreadID=184 _ThreadName=admin-thread-pool::admin-listener(5)] [timeMillis: 1549274539656] [levelValue: 800] [[
+  Redirecting to /]]
+
+[2019-02-04T11:02:19.869+0100] [Payara 5.184] [INFO] [] [org.glassfish.admingui] [tid: _ThreadID=117 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549274539869] [levelValue: 800] [[
+  Admin Console: Initializing Session Attributes...]]
+
+[2019-02-04T11:02:20.146+0100] [Payara 5.184] [WARNING] [] [java.util.prefs] [tid: _ThreadID=117 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549274540146] [levelValue: 900] [[
+  Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.]]
+
+[2019-02-04T11:05:19.735+0100] [Payara 5.184] [INFO] [NCLS-REST-00001] [javax.enterprise.admin.rest] [tid: _ThreadID=185 _ThreadName=admin-thread-pool::admin-listener(6)] [timeMillis: 1549274719735] [levelValue: 800] [[
+  Listening to REST requests at context: /command/domain.]]
+
+[2019-02-04T11:05:19.818+0100] [Payara 5.184] [INFO] [NCLS-CORE-00092] [javax.enterprise.system.core] [tid: _ThreadID=210 _ThreadName=Thread-30] [timeMillis: 1549274719818] [levelValue: 800] [[
+  Server shutdown initiated]]
+
+[2019-02-04T11:05:19.855+0100] [Payara 5.184] [INFO] [] [] [tid: _ThreadID=210 _ThreadName=Thread-30] [timeMillis: 1549274719855] [levelValue: 800] [[
+  FileMonitoring shutdown]]
+
+[2019-02-04T11:05:19.863+0100] [Payara 5.184] [INFO] [NCLS-JMX-00002] [javax.enterprise.system.jmx] [tid: _ThreadID=210 _ThreadName=Thread-30] [timeMillis: 1549274719863] [levelValue: 800] [[
+  JMXStartupService: Stopped JMXConnectorServer: null]]
+
+[2019-02-04T11:05:19.864+0100] [Payara 5.184] [INFO] [NCLS-JMX-00001] [javax.enterprise.system.jmx] [tid: _ThreadID=210 _ThreadName=Thread-30] [timeMillis: 1549274719864] [levelValue: 800] [[
+  JMXStartupService and JMXConnectors have been shut down.]]
+
+[2019-02-04T11:05:19.993+0100] [Payara 5.184] [SEVERE] [] [javax.enterprise.web.util] [tid: _ThreadID=222 _ThreadName=RunLevelControllerThread-1549274719918] [timeMillis: 1549274719993] [levelValue: 1000] [[
+  The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6f077f74]) and a value of type [org.glassfish.admingui.theme.AdminguiThemeContext] (value [org.glassfish.admingui.theme.AdminguiThemeContext@713b587a]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.]]
+
+[2019-02-04T11:05:20.045+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=222 _ThreadName=RunLevelControllerThread-1549274719918] [timeMillis: 1549274720045] [levelValue: 800] [[
+  Hazelcast Instance Unbound from JNDI at payara/Hazelcast]]
+
+[2019-02-04T11:05:20.046+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=222 _ThreadName=RunLevelControllerThread-1549274719918] [timeMillis: 1549274720046] [levelValue: 800] [[
+  JSR107 Caching Provider Unbound from JNDI at payara/CachingProvider]]
+
+[2019-02-04T11:05:20.046+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=222 _ThreadName=RunLevelControllerThread-1549274719918] [timeMillis: 1549274720046] [levelValue: 800] [[
+  JSR107 Cache Manager Unbound from JNDI at payara/CacheManager]]
+
+[2019-02-04T11:05:20.099+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=222 _ThreadName=RunLevelControllerThread-1549274719918] [timeMillis: 1549274720099] [levelValue: 800] [[
+  Shutdown Hazelcast]]
+
+[2019-02-04T11:05:20.145+0100] [Payara 5.184] [INFO] [] [] [tid: _ThreadID=221 _ThreadName=RunLevelControllerThread-1549274719911] [timeMillis: 1549274720145] [levelValue: 800] [[
+  JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool]]]
+
+[2019-02-04T11:12:31.902+0100] [] [INFO] [NCLS-GFLAUNCHER-00005] [javax.enterprise.launcher] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1549275151902] [levelValue: 800] [[
+  JVM invocation command line:
+C:\Program Files\Java\jdk1.8.0_201\bin\java.exe
+-cp
+D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/modules/glassfish.jar
+-XX:+UnlockDiagnosticVMOptions
+-XX:NewRatio=2
+-Xmx512m
+-Xbootclasspath/p:D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/lib/grizzly-npn-bootstrap-1.8.1.jar
+-javaagent:D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/lib/monitor/flashlight-agent.jar
+-client
+-Djavax.xml.accessExternalSchema=all
+-Djavax.net.ssl.trustStore=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/cacerts.jks
+-Djdk.tls.rejectClientInitiatedRenegotiation=true
+-Djdk.corba.allowOutputStreamSubclass=true
+-Dfelix.fileinstall.dir=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/modules/autostart/
+-Dorg.glassfish.additionalOSGiBundlesToStart=org.apache.felix.shell,org.apache.felix.gogo.runtime,org.apache.felix.gogo.shell,org.apache.felix.gogo.command,org.apache.felix.shell.remote,org.apache.felix.fileinstall
+-Dcom.sun.aas.installRoot=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish
+-Dfelix.fileinstall.poll=5000
+-Djava.endorsed.dirs=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/modules/endorsed;D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish/lib/endorsed
+-Djava.security.policy=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/server.policy
+-Dosgi.shell.telnet.maxconn=1
+-Dfelix.fileinstall.bundles.startTransient=true
+-Dcom.sun.enterprise.config.config_environment_factory_class=com.sun.enterprise.config.serverbeans.AppserverConfigEnvironmentFactory
+-Dfelix.fileinstall.log.level=2
+-Djavax.net.ssl.keyStore=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/keystore.jks
+-Djava.security.auth.login.config=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/config/login.conf
+-Dfelix.fileinstall.disableConfigSave=false
+-Dorg.glassfish.grizzly.DEFAULT_MEMORY_MANAGER=org.glassfish.grizzly.memory.HeapMemoryManager
+-Dfelix.fileinstall.bundles.new.start=true
+-Dcom.sun.aas.instanceRoot=D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1
+-Dosgi.shell.telnet.port=6666
+-Dgosh.args=--nointeractive
+-Dcom.sun.enterprise.security.httpsOutboundKeyAlias=s1as
+-Dorg.jboss.weld.serialization.beanIdentifierIndexOptimization=false
+-Dosgi.shell.telnet.ip=127.0.0.1
+-DANTLR_USE_DIRECT_CLASS_LOADING=true
+-Djava.awt.headless=true
+-Dcom.ctc.wstx.returnNullForDefaultNamespace=true
+-Djava.ext.dirs=C:\Program Files\Java\jre1.8.0_201/lib/ext;C:\Program Files\Java\jre1.8.0_201/jre/lib/ext;D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains\domain1/lib/ext
+-Djdbc.drivers=org.apache.derby.jdbc.ClientDriver
+-Dorg.glassfish.grizzly.nio.DefaultSelectorHandler.force-selector-spin-detection=true
+-Djava.library.path=D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/lib;C:/Program Files (x86)/Common Files/Oracle/Java/javapath;C:/Windows/Sun/Java/bin;C:/Windows/System32;C:/Windows;C:/ProgramData/DockerDesktop/version-bin;C:/Program Files/Docker/Docker/resources/bin;C:/Windows/System32/wbem;C:/Windows/System32/WindowsPowerShell/v1.0;C:/Windows/System32/OpenSSH;C:/Program Files/Git/cmd;C:/Program Files/nodejs;C:/Program Files/OpenSSL-Win64/bin;C:/Users/Martijn/AppData/Local/Microsoft/WindowsApps;C:/Users/Martijn/AppData/Local/Programs/Microsoft VS Code/bin;C:/Users/Martijn/AppData/Roaming/npm;D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/bin
+com.sun.enterprise.glassfish.bootstrap.ASMain
+-upgrade
+false
+-domaindir
+D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/domains/domain1
+-read-stdin
+true
+-asadmin-args
+--host,,,localhost,,,--port,,,4848,,,--secure=false,,,--terse=false,,,--echo=false,,,--interactive=false,,,start-domain,,,--verbose=false,,,--watchdog=false,,,--debug=false,,,--domaindir,,,D:\Martijn\Documents\Fontys\S6\JEA\application\payara5\glassfish\domains,,,domain1
+-domainname
+domain1
+-instancename
+server
+-type
+DAS
+-verbose
+false
+-asadmin-classpath
+D:/Martijn/Documents/Fontys/S6/JEA/application/payara5/glassfish/lib/client/appserver-cli.jar
+-debug
+false
+-asadmin-classname
+com.sun.enterprise.admin.cli.AdminMain
+-watchdog
+false]]
+
+[2019-02-04T11:12:35.970+0100] [Payara 5.184] [INFO] [NCLS-LOGGING-00009] [javax.enterprise.logging] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549275155798] [timeMillis: 1549275155970] [levelValue: 800] [[
+  Running Payara Version: Payara Server  5.184 #badassfish (build 89)]]
+
+[2019-02-04T11:12:35.975+0100] [Payara 5.184] [INFO] [NCLS-LOGGING-00010] [javax.enterprise.logging] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549275155798] [timeMillis: 1549275155975] [levelValue: 800] [[
+  Server log file is using Formatter class: com.sun.enterprise.server.logging.ODLLogFormatter]]
+
+[2019-02-04T11:12:36.419+0100] [Payara 5.184] [INFO] [] [org.glassfish.ha.store.spi.BackingStoreFactoryRegistry] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549275155804] [timeMillis: 1549275156419] [levelValue: 800] [[
+  Registered fish.payara.ha.hazelcast.store.HazelcastBackingStoreFactoryProxy for persistence-type = hazelcast in BackingStoreFactoryRegistry]]
+
+[2019-02-04T11:12:36.736+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549275155797] [timeMillis: 1549275156736] [levelValue: 800] [[
+  Network Listener http-listener-1 started in: 30ms - bound to [/0.0.0.0:8080]]]
+
+[2019-02-04T11:12:36.766+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549275155797] [timeMillis: 1549275156766] [levelValue: 800] [[
+  Network Listener http-listener-2 started in: 4ms - bound to [/0.0.0.0:8181]]]
+
+[2019-02-04T11:12:36.775+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549275155797] [timeMillis: 1549275156775] [levelValue: 800] [[
+  Network Listener admin-listener started in: 3ms - bound to [/0.0.0.0:4848]]]
+
+[2019-02-04T11:12:36.777+0100] [Payara 5.184] [INFO] [NCLS-CORE-00087] [javax.enterprise.system.core] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549275155797] [timeMillis: 1549275156777] [levelValue: 800] [[
+  Grizzly 2.4.3 started in: 444ms - bound to [http-listener-1:8080, http-listener-2:8181, admin-listener:4848]]]
+
+[2019-02-04T11:12:36.829+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549275155798] [timeMillis: 1549275156829] [levelValue: 800] [[
+  Network Listener iiop-service started in: 3ms - bound to [/0.0.0.0:3700]]]
+
+[2019-02-04T11:12:40.872+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549275155804] [timeMillis: 1549275160872] [levelValue: 800] [[
+  Hazelcast Instance Bound to JNDI at payara/Hazelcast]]
+
+[2019-02-04T11:12:40.873+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549275155804] [timeMillis: 1549275160873] [levelValue: 800] [[
+  JSR107 Caching Provider Bound to JNDI at payara/CachingProvider]]
+
+[2019-02-04T11:12:40.873+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549275155804] [timeMillis: 1549275160873] [levelValue: 800] [[
+  JSR107 Default Cache Manager Bound to JNDI at payara/CacheManager]]
+
+[2019-02-04T11:12:40.879+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.cluster.PayaraCluster] [tid: _ThreadID=107 _ThreadName=Executor-Service-3] [timeMillis: 1549275160879] [levelValue: 800] [[
+  Data Grid Status 
+Payara Data Grid State: DG Version: 35 DG Size: 1
+Instances: {
+Address: /145.93.136.128:4900 UUID: 3afbe12a-c196-47bf-8e39-65d321887b26 Lite: false This: true Name: server Group: server-config
+}]]
+
+[2019-02-04T11:12:40.882+0100] [Payara 5.184] [INFO] [NCLS-CORE-00017] [javax.enterprise.system.core] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1549275160882] [levelValue: 800] [[
+  Payara Server  5.184 #badassfish (89) startup time : Felix (3,417ms), startup services(5,090ms), total(8,507ms)]]
+
+[2019-02-04T11:12:40.893+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.notification.NotificationService] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1549275160893] [levelValue: 800] [[
+  Payara Notification Service bootstrapped with configuration: NotificationExecutionOptions{enabled=true, notifierConfigurationExecutionOptionsList={LOG=LogNotifierConfigurationExecutionOptions{useSeparateLogFile=false} NotifierConfigurationExecutionOptions{notifierType=LOG, enabled=true, noisy=true}}}]]
+
+[2019-02-04T11:12:41.185+0100] [Payara 5.184] [INFO] [] [org.hibernate.validator.internal.util.Version] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275161185] [levelValue: 800] [[
+  HV000001: Hibernate Validator 6.0.12.Final]]
+
+[2019-02-04T11:12:41.421+0100] [Payara 5.184] [INFO] [NCLS-CORE-00101] [javax.enterprise.system.core] [tid: _ThreadID=28 _ThreadName=RunLevelControllerThread-1549275155804] [timeMillis: 1549275161421] [levelValue: 800] [[
+  Network Listener JMS_PROXY_default_JMS_host started in: 16ms - bound to [/0.0.0.0:7676]]]
+
+[2019-02-04T11:12:41.473+0100] [Payara 5.184] [INFO] [NCLS-JMX-00005] [javax.enterprise.system.jmx] [tid: _ThreadID=121 _ThreadName=Thread-11] [timeMillis: 1549275161473] [levelValue: 800] [[
+  JMXStartupService has started JMXConnector on JMXService URL service:jmx:rmi://0.0.0.0:8686/jndi/rmi://0.0.0.0:8686/jmxrmi]]
+
+[2019-02-04T11:12:43.174+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01002] [javax.enterprise.system.core.security] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163174] [levelValue: 800] [[
+  Java security manager is disabled.]]
+
+[2019-02-04T11:12:43.174+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01010] [javax.enterprise.system.core.security] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163174] [levelValue: 800] [[
+  Entering Security Startup Service.]]
+
+[2019-02-04T11:12:43.177+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01143] [javax.enterprise.system.core.security] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163177] [levelValue: 800] [[
+  Loading policy provider com.sun.enterprise.security.provider.PolicyWrapper.]]
+
+[2019-02-04T11:12:43.258+0100] [Payara 5.184] [INFO] [NCLS-SECURITY-01011] [javax.enterprise.system.core.security] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163258] [levelValue: 800] [[
+  Security Service(s) started successfully.]]
+
+[2019-02-04T11:12:43.290+0100] [Payara 5.184] [INFO] [] [javax.enterprise.resource.corba.org.glassfish.enterprise.iiop.api] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549275163290] [levelValue: 800] [[
+  GlassFishORBFactory service initialized.]]
+
+[2019-02-04T11:12:43.555+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163555] [levelValue: 800] [[
+  Created HTTP listener http-listener-1 on host/port 0.0.0.0:8080]]
+
+[2019-02-04T11:12:43.563+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163563] [levelValue: 800] [[
+  Created HTTP listener http-listener-2 on host/port 0.0.0.0:8181]]
+
+[2019-02-04T11:12:43.565+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163565] [levelValue: 800] [[
+  Created HTTP listener admin-listener on host/port 0.0.0.0:4848]]
+
+[2019-02-04T11:12:43.594+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00200] [javax.enterprise.web] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163594] [levelValue: 800] [[
+  Created virtual server server]]
+
+[2019-02-04T11:12:43.598+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00200] [javax.enterprise.web] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163598] [levelValue: 800] [[
+  Created virtual server __asadmin]]
+
+[2019-02-04T11:12:43.808+0100] [Payara 5.184] [INFO] [AS-WEB-CORE-00306] [javax.enterprise.web.core] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163808] [levelValue: 800] [[
+  Setting JAAS app name glassfish-web]]
+
+[2019-02-04T11:12:43.810+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00201] [javax.enterprise.web] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275163810] [levelValue: 800] [[
+  Virtual server server loaded default web module ]]
+
+[2019-02-04T11:12:44.751+0100] [Payara 5.184] [INFO] [NCLS-REST-00001] [javax.enterprise.admin.rest] [tid: _ThreadID=50 _ThreadName=admin-thread-pool::admin-listener(1)] [timeMillis: 1549275164751] [levelValue: 800] [[
+  Listening to REST requests at context: /management/domain.]]
+
+[2019-02-04T11:12:45.568+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00172] [javax.enterprise.web] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275165568] [levelValue: 800] [[
+  Loading application [JEA] at [/JEA]]]
+
+[2019-02-04T11:12:45.782+0100] [Payara 5.184] [INFO] [] [javax.enterprise.system.core] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275165782] [levelValue: 800] [[
+  JEA was successfully deployed in 3,811 milliseconds.]]
+
+[2019-02-04T11:12:45.912+0100] [Payara 5.184] [INFO] [NCLS-CORE-00022] [javax.enterprise.system.core] [tid: _ThreadID=143 _ThreadName=Thread-13] [timeMillis: 1549275165912] [levelValue: 800] [[
+  Loading application __admingui done in 1,037 ms]]
+
+[2019-02-04T11:12:47.594+0100] [Payara 5.184] [INFO] [jsf.config.listener.version] [javax.enterprise.resource.webcontainer.jsf.config] [tid: _ThreadID=143 _ThreadName=Thread-13] [timeMillis: 1549275167594] [levelValue: 800] [[
+  Initializing Mojarra 2.3.3.99.payara-p5 for context '']]
+
+[2019-02-04T11:12:49.122+0100] [Payara 5.184] [INFO] [AS-WEB-GLUE-00172] [javax.enterprise.web] [tid: _ThreadID=143 _ThreadName=Thread-13] [timeMillis: 1549275169122] [levelValue: 800] [[
+  Loading application [__admingui] at [/]]]
+
+[2019-02-04T11:13:02.252+0100] [Payara 5.184] [INFO] [NCLS-REST-00001] [javax.enterprise.admin.rest] [tid: _ThreadID=55 _ThreadName=admin-thread-pool::admin-listener(2)] [timeMillis: 1549275182252] [levelValue: 800] [[
+  Listening to REST requests at context: /command/domain.]]
+
+[2019-02-04T11:13:02.314+0100] [Payara 5.184] [INFO] [NCLS-CORE-00092] [javax.enterprise.system.core] [tid: _ThreadID=183 _ThreadName=Thread-30] [timeMillis: 1549275182314] [levelValue: 800] [[
+  Server shutdown initiated]]
+
+[2019-02-04T11:13:02.337+0100] [Payara 5.184] [INFO] [] [] [tid: _ThreadID=183 _ThreadName=Thread-30] [timeMillis: 1549275182337] [levelValue: 800] [[
+  FileMonitoring shutdown]]
+
+[2019-02-04T11:13:02.345+0100] [Payara 5.184] [INFO] [NCLS-JMX-00002] [javax.enterprise.system.jmx] [tid: _ThreadID=183 _ThreadName=Thread-30] [timeMillis: 1549275182345] [levelValue: 800] [[
+  JMXStartupService: Stopped JMXConnectorServer: null]]
+
+[2019-02-04T11:13:02.346+0100] [Payara 5.184] [INFO] [NCLS-JMX-00001] [javax.enterprise.system.jmx] [tid: _ThreadID=183 _ThreadName=Thread-30] [timeMillis: 1549275182346] [levelValue: 800] [[
+  JMXStartupService and JMXConnectors have been shut down.]]
+
+[2019-02-04T11:13:02.519+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549275155798] [timeMillis: 1549275182519] [levelValue: 800] [[
+  Hazelcast Instance Unbound from JNDI at payara/Hazelcast]]
+
+[2019-02-04T11:13:02.519+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549275155798] [timeMillis: 1549275182519] [levelValue: 800] [[
+  JSR107 Caching Provider Unbound from JNDI at payara/CachingProvider]]
+
+[2019-02-04T11:13:02.520+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549275155798] [timeMillis: 1549275182520] [levelValue: 800] [[
+  JSR107 Cache Manager Unbound from JNDI at payara/CacheManager]]
+
+[2019-02-04T11:13:02.729+0100] [Payara 5.184] [INFO] [] [fish.payara.nucleus.hazelcast.HazelcastCore] [tid: _ThreadID=27 _ThreadName=RunLevelControllerThread-1549275155798] [timeMillis: 1549275182729] [levelValue: 800] [[
+  Shutdown Hazelcast]]
+
+[2019-02-04T11:13:02.769+0100] [Payara 5.184] [INFO] [] [] [tid: _ThreadID=26 _ThreadName=RunLevelControllerThread-1549275155797] [timeMillis: 1549275182769] [levelValue: 800] [[
+  JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool]]]
+

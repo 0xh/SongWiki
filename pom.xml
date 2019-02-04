@@ -61,6 +61,32 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.cargo</groupId>
+          <artifactId>cargo-maven2-plugin</artifactId>
+          <configuration>
+            <container>
+              <containerId>glassfish5x</containerId>
+              <type>installed</type>
+              <home>/payara5</home>
+            </container>
+            <configuration>
+              <type>existing</type>
+              <home>/payara5/glassfish/domains</home>
+              <properties>
+                <cargo.glassfish.domain.name>domain1</cargo.glassfish.domain.name>
+              </properties>
+            </configuration>
+          </configuration>
+          <!-- provides JSR88 client API to deploy on Payara -->
+          <dependencies>
+            <dependency>
+              <groupId>org.glassfish.main.deployment</groupId>
+              <artifactId>deployment-client</artifactId>
+              <version>5.0</version>
+            </dependency>
+          </dependencies>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>

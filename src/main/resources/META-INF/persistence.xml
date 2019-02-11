@@ -3,7 +3,7 @@
     <persistence-unit name="PostgreSQL_PU">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>main.java.entities.Account</class>
+        <class>entities.Account</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL82Dialect" />

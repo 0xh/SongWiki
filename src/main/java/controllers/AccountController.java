@@ -1,7 +1,7 @@
-package main.java.controllers;
+package controllers;
 
-import main.java.repositories.AccountRepository;
-import main.java.entities.Account;
+import entities.Account;
+import repositories.AccountRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

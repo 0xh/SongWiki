@@ -1,6 +1,6 @@
-package main.java.repositories;
+package repositories;
 
-import main.java.entities.Account;
+import entities.Account;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

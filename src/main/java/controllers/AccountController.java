@@ -1,45 +1,41 @@
 package controllers;
 
 import entities.Account;
+import interfaces.IAccountController;
 import repositories.AccountRepository;
 
-import javax.ejb.Stateless;
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import javax.ws.rs.*;
 import java.util.List;
 
-@Stateless
-@Path("accounts")
-public class AccountController {
+@Model
+public class AccountController implements IAccountController {
 
     @Inject
     private AccountRepository accountRepository;
 
-    @GET
-    @Produces("application/json")
-    public List<Account> all() { return accountRepository.getAll(); }
+    @Override
+    public List<Account> all() {
+        return accountRepository.getAll();
+    }
 
-    @GET
-    @Path("/{username}")
-    @Produces("application/json")
-    public Account find(@PathParam("username") String username) { return accountRepository.find(username); }
+    @Override
+    public Account find(String username) {
+        return accountRepository.find(username);
+    }
 
-    @POST
-    @Consumes("application/json")
+    @Override
     public void save(Account account) {
         accountRepository.save(account);
     }
 
-    @PUT
-    @Consumes("application/json")
+    @Override
     public void update(Account account) {
         accountRepository.update(account);
     }
 
-    @DELETE
-    @Path("/{username}")
-    @Consumes("application/json")
-    public void delete(@PathParam("username") String username) {
+    @Override
+    public void delete(String username) {
         Account account = accountRepository.find(username);
         accountRepository.delete(account);
     }

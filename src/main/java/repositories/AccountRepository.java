@@ -1,8 +1,10 @@
 package repositories;
 
 import entities.Account;
+import interceptors.LoggingInterceptor;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -17,6 +19,7 @@ public class AccountRepository {
         return entityManager.createNamedQuery("Account.getAll", Account.class).getResultList();
     }
 
+    @Interceptors(LoggingInterceptor.class)
     public Account find(String username) {
         return entityManager.createNamedQuery("Account.findOne", Account.class)
                 .setParameter("username", username).getSingleResult();

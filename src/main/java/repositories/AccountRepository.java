@@ -3,11 +3,13 @@ package repositories;
 import entities.Account;
 import interceptors.LoggingInterceptor;
 
+import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Stateless
 public class AccountRepository {
 
     @PersistenceContext

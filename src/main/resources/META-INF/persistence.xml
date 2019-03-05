@@ -3,10 +3,7 @@
     <persistence-unit name="PostgreSQL_PU">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>entities.Account</class>
-
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL82Dialect" />
             <property name="hibernate.connection.datasource" value="jdbc/JEAPostgreSQLPool"/>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>

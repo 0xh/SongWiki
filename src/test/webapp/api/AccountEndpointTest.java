@@ -15,7 +15,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.jboss.shrinkwrap.resolver.api.maven.ScopeType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -61,7 +60,7 @@ public class AccountEndpointTest {
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         File[] dependencies = Maven.configureResolver().loadPomFromFile("pom.xml")
-                .importDependencies(ScopeType.TEST).resolve().withTransitivity().asFile();
+                .importCompileAndRuntimeDependencies().resolve().withTransitivity().asFile();
 
         return ShrinkWrap.create(WebArchive.class)
                 .addClass(ApplicationConfig.class)

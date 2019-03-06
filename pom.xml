@@ -17,6 +17,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+        <payara.home>/payara5</payara.home>
+        <payara.domainDir>/payara5/glassfish/domains</payara.domainDir>
+        <payara.domainName>domain1</payara.domainName>
     </properties>
 
     <dependencyManagement>
@@ -138,7 +141,6 @@
                 </plugin>
 
                 <!-- Used for Maven deployments -->
-                <!-- TODO: Configure this with a .properties file -->
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven2-plugin</artifactId>
@@ -146,13 +148,13 @@
                         <container>
                             <containerId>glassfish5x</containerId>
                             <type>installed</type>
-                            <home>/payara5</home>
+                            <home>${payara.home}</home>
                         </container>
                         <configuration>
                             <type>existing</type>
-                            <home>/payara5/glassfish/domains</home>
+                            <home>${payara.domainDir}</home>
                             <properties>
-                                <cargo.glassfish.domain.name>domain1</cargo.glassfish.domain.name>
+                                <cargo.glassfish.domain.name>${payara.domainName}</cargo.glassfish.domain.name>
                             </properties>
                         </configuration>
                     </configuration>

@@ -4,10 +4,7 @@ import controllers.AccountController;
 import entities.Account;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import java.util.List;
 
 @Path("accounts")
@@ -31,5 +28,10 @@ public class AccountEndpoint {
 
         if (account == null) throw new NotFoundException();
         return account;
+    }
+
+    @POST
+    public void saveAccount(Account account) {
+        accountController.save(account);
     }
 }

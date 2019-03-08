@@ -20,6 +20,7 @@ import webapp.api.data.AccountDataGenerator;
 import webapp.api.data.DataGenerator;
 
 import javax.persistence.EntityManager;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
 
@@ -109,6 +110,23 @@ public class AccountEndpointTest extends BaseClass {
 
         // Expect a 404: Not Found status code
         assertEquals(response.getStatus(), 404);
+    }
+
+    @Test
+    @InSequence(4)
+    public void saveAccount() {
+        Account account = new Account();
+        account.setUsername("new");
+        account.setEmail("new@test.com");
+        account.setAge(44);
+
+        Response response = client.target(uri).path("api").path("accounts")
+                .request()
+                .post(Entity.json(account));
+
+        // Expect a 204: No Content as saving the account doesn't return anything
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(response.getStatus(), 204);
     }
 
 }

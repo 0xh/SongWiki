@@ -1,4 +1,29 @@
 package entities;
 
+import javax.persistence.*;
+
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "Notification.getAll", query = "SELECT n FROM Notification n"),
+        @NamedQuery(name = "Notification.findOne", query = "select n from Notification n where n.id = :id")
+})
 public class Notification {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private String message;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

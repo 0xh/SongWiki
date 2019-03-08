@@ -17,7 +17,7 @@ public class AccountEndpoint {
 
     @GET
     public List<Account> getAllAccounts() {
-        return accountController.all();
+        return accountController.getAll();
     }
 
     @GET

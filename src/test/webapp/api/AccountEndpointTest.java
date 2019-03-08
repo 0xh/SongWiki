@@ -19,7 +19,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import repositories.AccountRepository;
-import webapp.api.data.TestDataGenerator;
+import webapp.api.data.AccountDataGenerator;
+import webapp.api.data.DataGenerator;
 
 import javax.persistence.EntityManager;
 import javax.ws.rs.client.Client;
@@ -71,7 +72,8 @@ public class AccountEndpointTest {
                 .addClass(Account.class)
                 .addClass(EntityManager.class)
                 .addClass(LoggingInterceptor.class)
-                .addClass(TestDataGenerator.class)
+                .addClass(DataGenerator.class)
+                .addClass(AccountDataGenerator.class)
                 .addAsLibraries(dependencies)
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml");

@@ -18,7 +18,10 @@ public class AccountEndpoint {
 
     @GET
     public List<Account> getAllAccounts() {
-        return accountController.getAll();
+        List<Account> accountList = accountController.getAll();
+
+        if (accountList == null) throw new NotFoundException();
+        return accountList;
     }
 
     @GET

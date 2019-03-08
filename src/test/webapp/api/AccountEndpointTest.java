@@ -8,6 +8,7 @@ import interceptors.LoggingInterceptor;
 import interfaces.IAccountController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -57,6 +58,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
+    @InSequence(1)
     public void getAllAccounts() {
         // Use the JAX-RS 2.0 Client API to test the endpoint
         Response response = client.target(uri).path("api").path("accounts")
@@ -75,6 +77,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
+    @InSequence(2)
     public void getSpecificExistingAccount() {
         // Use the JAX-RS 2.0 Client API to test the endpoint
         Response response = client.target(uri).path("api").path("accounts")
@@ -96,6 +99,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
+    @InSequence(3)
     public void failOnNonExistentAccount() {
         // Use the JAX-RS 2.0 Client API to test the endpoint
         Response response = client.target(uri).path("api").path("accounts")

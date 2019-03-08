@@ -15,7 +15,7 @@ public class AccountController implements IAccountController {
     private AccountRepository accountRepository;
 
     @Override
-    public List<Account> all() {
+    public List<Account> getAll() {
         return accountRepository.getAll();
     }
 

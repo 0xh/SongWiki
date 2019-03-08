@@ -69,9 +69,42 @@ public class AccountEndpointTest extends BaseClass {
         // Parse an array of accounts from the given JSON
         Account[] accounts = gson.fromJson(accountsJson, Account[].class);
 
-        assertEquals(response.getStatus(), Response.Status.OK.getStatusCode());
+        assertEquals(response.getStatus(), 200);
         assertEquals(accounts.length, 1);
         assertEquals(accounts[0].getUsername(), "test");
+    }
+
+    @Test
+    public void getSpecificExistingAccount() {
+        // Use the JAX-RS 2.0 Client API to test the endpoint
+        Response response = client.target(uri).path("api").path("accounts")
+                .path("test")
+                .request()
+                .get();
+
+        // Parse the response to String as it's a JSON object
+        String accountJson = response.readEntity(String.class);
+
+        // Parse the account from JSON
+        Account fetchedAccount = gson.fromJson(accountJson, Account.class);
+
+        // Expect a successful database call with the predefined entries
+        assertEquals(response.getStatus(), 200);
+        assertEquals(fetchedAccount.getUsername(), "test");
+        assertEquals(fetchedAccount.getEmail(), "test@test.nl");
+        assertEquals(fetchedAccount.getAge(), 21);
+    }
+
+    @Test
+    public void failOnNonExistentAccount() {
+        // Use the JAX-RS 2.0 Client API to test the endpoint
+        Response response = client.target(uri).path("api").path("accounts")
+                .path("wrong")
+                .request()
+                .get();
+
+        // Expect a 404: Not Found status code
+        assertEquals(response.getStatus(), 404);
     }
 
 }

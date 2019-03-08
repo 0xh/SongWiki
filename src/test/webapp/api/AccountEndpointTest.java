@@ -129,4 +129,19 @@ public class AccountEndpointTest extends BaseClass {
         assertEquals(response.getStatus(), 204);
     }
 
+    @Test
+    @InSequence(5)
+    public void failOnSavingExistingAccount() {
+        Account account = new Account();
+        account.setUsername("new");
+        account.setEmail("new@test.com");
+        account.setAge(44);
+
+        Response response = client.target(uri).path("api").path("accounts")
+                .request()
+                .post(Entity.json(account));
+
+        // Expect a 500: Server Error as the account is already present in the database
+        assertEquals(response.getStatus(), 500);
+    }
 }

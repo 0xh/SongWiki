@@ -2,19 +2,15 @@ package webapp.api;
 
 import api.NotificationEndpoint;
 import api.config.ApplicationConfig;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import controllers.NotificationController;
 import entities.Notification;
 import interfaces.INotificationController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import repositories.NotificationRepository;
@@ -22,32 +18,13 @@ import webapp.api.data.DataGenerator;
 import webapp.api.data.NotificationDataGenerator;
 
 import javax.persistence.EntityManager;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Response;
 import java.io.File;
-import java.net.URI;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Arquillian.class)
-public class NotificationEndpointTest {
-
-    /**
-     * The base URI of the running server instance
-     */
-    @ArquillianResource
-    private URI uri;
-
-    /**
-     * The JAX-RS client to test/call the endpoint(s) with
-     */
-    private Client client;
-
-    /**
-     * Instantiate Gson object without CDI as that's not available due to testable=false
-     */
-    private Gson gson;
+public class NotificationEndpointTest extends BaseClass {
 
     /**
      * Runs on deployment to fetch the necessary classes and dependencies for the test(s)
@@ -76,12 +53,6 @@ public class NotificationEndpointTest {
                 .addAsLibraries(dependencies)
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml");
-    }
-
-    @Before
-    public void setUp() {
-        this.client = ClientBuilder.newClient();
-        this.gson = new GsonBuilder().create();
     }
 
     @Test

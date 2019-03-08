@@ -2,20 +2,16 @@ package webapp.api;
 
 import api.AccountEndpoint;
 import api.config.ApplicationConfig;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import controllers.AccountController;
 import entities.Account;
 import interceptors.LoggingInterceptor;
 import interfaces.IAccountController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import repositories.AccountRepository;
@@ -23,32 +19,13 @@ import webapp.api.data.AccountDataGenerator;
 import webapp.api.data.DataGenerator;
 
 import javax.persistence.EntityManager;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Response;
 import java.io.File;
-import java.net.URI;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Arquillian.class)
-public class AccountEndpointTest {
-
-    /**
-     * The base URI of the running server instance
-     */
-    @ArquillianResource
-    private URI uri;
-
-    /**
-     * The JAX-RS client to test/call the endpoint(s) with
-     */
-    private Client client;
-
-    /**
-     * Instantiate Gson object without CDI as that's not available due to testable=false
-     */
-    private Gson gson;
+public class AccountEndpointTest extends BaseClass {
 
     /**
      * Runs on deployment to fetch the necessary classes and dependencies for the test(s)
@@ -77,12 +54,6 @@ public class AccountEndpointTest {
                 .addAsLibraries(dependencies)
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml");
-    }
-
-    @Before
-    public void setUp() {
-        this.client = ClientBuilder.newClient();
-        this.gson = new GsonBuilder().create();
     }
 
     @Test

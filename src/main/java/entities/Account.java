@@ -14,9 +14,6 @@ import javax.validation.constraints.Size;
 public class Account {
 
     @Id
-    @GeneratedValue
-    private int id;
-
     @Size(min = 2, max = 40, message = "Username must be between 2 and 40 characters")
     private String username;
 
@@ -26,8 +23,6 @@ public class Account {
     @Min(value = 13, message = "Age should not be less than 13")
     @Max(value = 130, message = "Age should not be greater than 130")
     private int age;
-
-    public int getId() { return id; }
 
     public String getUsername() {
         return username;

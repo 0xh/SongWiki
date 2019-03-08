@@ -66,3 +66,9 @@ Resources -> JDBC -> JDBC Connection Pools:
 The `glassFishHome` property should be set to the local copy of Payara to run the tests with!  
 Currenty, the Payara server is expected to live one directory above the source code (denoted by the `../`).  
 If this is not set correctly the application won't find the server to be deployed to and therefor won't run!
+
+## Endpoint must-knowns
+Endpoint classes need to manually throw exceptions when an error occurs.  
+If not thrown, Jersey returns status codes in the 200 range.  
+For example, 204 is returned when an object is null instead of the expected 404.  
+[Reference](https://stackoverflow.com/a/22869076)

@@ -144,4 +144,64 @@ public class AccountEndpointTest extends BaseClass {
         // Expect a 500: Server Error as the account is already present in the database
         assertEquals(response.getStatus(), 500);
     }
+
+    @Test
+    @InSequence(6)
+    public void updateAccount() {
+        Account account = new Account();
+        account.setUsername("new");
+        account.setEmail("new2@test.nl");
+        account.setAge(55);
+
+        Response response = client.target(uri).path("api").path("accounts")
+                .request()
+                .put(Entity.json(account));
+
+        // Expect a 204: No Content as saving the account doesn't return anything
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(response.getStatus(), 204);
+    }
+
+    @Test
+    @InSequence(7)
+    public void updateNonExistentAccount() {
+        Account account = new Account();
+        account.setUsername("wrong");
+        account.setEmail("wrong@test.nl");
+        account.setAge(55);
+
+        Response response = client.target(uri).path("api").path("accounts")
+                .request()
+                .put(Entity.json(account));
+
+        // Expect a 500: Server Error as the specified account doesn't exist
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(response.getStatus(), 204);
+    }
+
+    @Test
+    @InSequence(8)
+    public void deleteAccount() {
+        Response response = client.target(uri).path("api").path("accounts")
+                .path("new")
+                .request()
+                .delete();
+
+        // Expect a 204: No Content as saving the account doesn't return anything
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(response.getStatus(), 204);
+    }
+
+    @Test
+    @InSequence(9)
+    public void deleteNonExistentAccount() {
+        Response response = client.target(uri).path("api").path("accounts")
+                .path("wrong")
+                .request()
+                .delete();
+
+        // Expect a 204: No Content as the specified account doesn't exist
+        // so is not present in the database by default
+        assertEquals(response.getStatus(), 204);
+    }
 }

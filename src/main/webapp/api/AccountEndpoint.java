@@ -34,4 +34,15 @@ public class AccountEndpoint {
     public void saveAccount(Account account) {
         accountController.save(account);
     }
+
+    @PUT
+    public void updateAccount(Account account) {
+        accountController.update(account);
+    }
+
+    @DELETE
+    @Path("/{username}")
+    public void deleteAccount(@PathParam("username") String username) {
+        accountController.delete(username);
+    }
 }

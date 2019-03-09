@@ -34,6 +34,10 @@ public class AccountRepository {
     }
 
     public void delete(Account account) {
-        entityManager.remove(account);
+        // EntityManager.remove() works only on entities which are managed in the current transaction/context.
+        // You need to check if the entity is managed by EntityManager.contains() and if not,
+        // then make it managed with EntityManager.merge().
+        // As shown in https://stackoverflow.com/a/17027553
+        entityManager.remove(entityManager.contains(account) ? account : entityManager.merge(account));
     }
 }

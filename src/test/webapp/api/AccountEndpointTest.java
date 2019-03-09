@@ -79,7 +79,7 @@ public class AccountEndpointTest extends BaseClass {
 
     @Test
     @InSequence(2)
-    public void getSpecificExistingAccount() {
+    public void getAccount() {
         // Use the JAX-RS 2.0 Client API to test the endpoint
         Response response = client.target(uri).path("api").path("accounts")
                 .path("test")
@@ -101,7 +101,7 @@ public class AccountEndpointTest extends BaseClass {
 
     @Test
     @InSequence(3)
-    public void failOnNonExistentAccount() {
+    public void getNonExistentAccount() {
         // Use the JAX-RS 2.0 Client API to test the endpoint
         Response response = client.target(uri).path("api").path("accounts")
                 .path("wrong")
@@ -131,7 +131,7 @@ public class AccountEndpointTest extends BaseClass {
 
     @Test
     @InSequence(5)
-    public void failOnSavingExistingAccount() {
+    public void saveNonExistentAccount() {
         Account account = new Account();
         account.setUsername("new");
         account.setEmail("new@test.com");

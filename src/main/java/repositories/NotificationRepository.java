@@ -31,6 +31,10 @@ public class NotificationRepository {
     }
 
     public void delete(Notification notification) {
-        entityManager.remove(notification);
+        // EntityManager.remove() works only on entities which are managed in the current transaction/context.
+        // You need to check if the entity is managed by EntityManager.contains() and if not,
+        // then make it managed with EntityManager.merge().
+        // As shown in https://stackoverflow.com/a/17027553
+        entityManager.remove(entityManager.contains(notification) ? notification : entityManager.merge(notification));
     }
 }

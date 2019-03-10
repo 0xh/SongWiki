@@ -131,7 +131,7 @@ public class AccountEndpointTest extends BaseClass {
 
     @Test
     @InSequence(5)
-    public void saveNonExistentAccount() {
+    public void saveAlreadyExistingAccount() {
         Account account = new Account();
         account.setUsername("new");
         account.setEmail("new@test.com");
@@ -162,6 +162,9 @@ public class AccountEndpointTest extends BaseClass {
         assertEquals(response.getStatus(), 204);
     }
 
+    /**
+     * TODO: fix 204 response instead of 500 due to merge of unknown item which creates a new item
+     */
     @Test
     @InSequence(7)
     public void updateNonExistentAccount() {
@@ -176,7 +179,7 @@ public class AccountEndpointTest extends BaseClass {
 
         // Expect a 500: Server Error as the specified account doesn't exist
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 204);
+        assertEquals(response.getStatus(), 500);
     }
 
     @Test
@@ -196,12 +199,11 @@ public class AccountEndpointTest extends BaseClass {
     @InSequence(9)
     public void deleteNonExistentAccount() {
         Response response = client.target(uri).path("api").path("accounts")
-                .path("wrong")
+                .path("nonexistent")
                 .request()
                 .delete();
 
-        // Expect a 204: No Content as the specified account doesn't exist
-        // so is not present in the database by default
-        assertEquals(response.getStatus(), 204);
+        // Expect a 500: Server Error as the specified account doesn't exist
+        assertEquals(response.getStatus(), 500);
     }
 }

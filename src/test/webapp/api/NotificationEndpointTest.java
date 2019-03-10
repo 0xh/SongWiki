@@ -7,6 +7,7 @@ import entities.Notification;
 import interfaces.INotificationController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -18,6 +19,7 @@ import webapp.api.data.DataGenerator;
 import webapp.api.data.NotificationDataGenerator;
 
 import javax.persistence.EntityManager;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
 
@@ -56,6 +58,7 @@ public class NotificationEndpointTest extends BaseClass {
     }
 
     @Test
+    @InSequence(1)
     public void getAllNotifications() {
         // Use the JAX-RS 2.0 Client API to test the endpoint
         Response response = client.target(uri).path("api").path("notifications")
@@ -72,4 +75,120 @@ public class NotificationEndpointTest extends BaseClass {
         assertEquals(notifications.length, 1);
         assertEquals(notifications[0].getMessage(), "Test message");
     }
+
+    @Test
+    @InSequence(2)
+    public void getNotification() {
+        Response response = client.target(uri).path("api").path("notifications")
+                .path("1")
+                .request()
+                .get();
+
+        String notificationJSON = response.readEntity(String.class);
+        Notification parsedNotification = gson.fromJson(notificationJSON, Notification.class);
+
+        assertEquals(response.getStatus(), 200);
+        assertEquals(parsedNotification.getMessage(), "Test message");
+    }
+
+    @Test
+    @InSequence(2)
+    public void getNonExistentNotification() {
+        Response response = client.target(uri).path("api").path("notifications")
+                .path("wrong")
+                .request()
+                .get();
+
+        assertEquals(response.getStatus(), 404);
+    }
+
+    @Test
+    @InSequence(3)
+    public void saveNotification() {
+        Notification notification = new Notification();
+        notification.setMessage("Test message 1");
+
+        Response response = client.target(uri).path("api").path("notifications")
+                .request()
+                .post(Entity.json(notification));
+
+        // Expect a 204: No Content as saving the account doesn't return anything
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(response.getStatus(), 204);
+    }
+
+    @Test
+    @InSequence(3)
+    public void saveAlreadyExistingNotification() {
+        Notification notification = new Notification();
+        notification.setId(2);
+        notification.setMessage("Already existing");
+
+        Response response = client.target(uri).path("api").path("notifications")
+                .request()
+                .post(Entity.json(notification));
+
+        // Expect a 500: Server Error as the notification is already present in the database
+        assertEquals(response.getStatus(), 500);
+    }
+
+    @Test
+    @InSequence(4)
+    public void updateNotification() {
+        Notification notification = new Notification();
+        notification.setId(2);
+        notification.setMessage("Test message updated");
+
+        Response response = client.target(uri).path("api").path("notifications")
+                .request()
+                .put(Entity.json(notification));
+
+        // Expect a 204: No Content as saving the notification doesn't return anything
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(response.getStatus(), 204);
+    }
+
+    /**
+     * TODO: fix 204 response instead of 500 due to merge of unknown item which creates a new item
+     */
+    @Test
+    @InSequence(4)
+    public void updateNonExistentNotification() {
+        Notification notification = new Notification();
+        notification.setId(19000);
+        notification.setMessage("Non existent");
+
+        Response response = client.target(uri).path("api").path("notifications")
+                .request()
+                .put(Entity.json(notification));
+
+        // Expect a 500: Server Error as the specified notification doesn't exist
+        assertEquals(response.getStatus(), 500);
+    }
+
+    @Test
+    @InSequence(5)
+    public void deleteNotification() {
+        Response response = client.target(uri).path("api").path("notifications")
+                .path("2")
+                .request()
+                .delete();
+
+        // Expect a 204: No Content as saving the notification doesn't return anything
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(response.getStatus(), 204);
+    }
+
+    @Test
+    @InSequence(5)
+    public void deleteNonExistentNotification() {
+        Response response = client.target(uri).path("api").path("notifications")
+                .path("5")
+                .request()
+                .delete();
+
+        // Expect a 500: Server Error as the specified notification doesn't exist
+        assertEquals(response.getStatus(), 500);
+    }
+
 }

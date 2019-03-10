@@ -33,7 +33,8 @@ public class NotificationController implements INotificationController {
     }
 
     @Override
-    public void delete(Notification notification) {
+    public void delete(int id) {
+        Notification notification = notificationRepository.find(id);
         notificationRepository.delete(notification);
     }
 }

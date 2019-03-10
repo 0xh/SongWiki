@@ -9,5 +9,5 @@ public interface INotificationController {
     Notification find(int id);
     void save(Notification notification);
     void update(Notification notification);
-    void delete(Notification notification);
+    void delete(int id);
 }

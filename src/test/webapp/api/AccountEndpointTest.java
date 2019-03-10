@@ -100,7 +100,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
-    @InSequence(3)
+    @InSequence(2)
     public void getNonExistentAccount() {
         // Use the JAX-RS 2.0 Client API to test the endpoint
         Response response = client.target(uri).path("api").path("accounts")
@@ -113,7 +113,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
-    @InSequence(4)
+    @InSequence(3)
     public void saveAccount() {
         Account account = new Account();
         account.setUsername("new");
@@ -130,7 +130,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
-    @InSequence(5)
+    @InSequence(3)
     public void saveAlreadyExistingAccount() {
         Account account = new Account();
         account.setUsername("new");
@@ -146,7 +146,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
-    @InSequence(6)
+    @InSequence(4)
     public void updateAccount() {
         Account account = new Account();
         account.setUsername("new");
@@ -166,7 +166,7 @@ public class AccountEndpointTest extends BaseClass {
      * TODO: fix 204 response instead of 500 due to merge of unknown item which creates a new item
      */
     @Test
-    @InSequence(7)
+    @InSequence(4)
     public void updateNonExistentAccount() {
         Account account = new Account();
         account.setUsername("wrong");
@@ -183,7 +183,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
-    @InSequence(8)
+    @InSequence(5)
     public void deleteAccount() {
         Response response = client.target(uri).path("api").path("accounts")
                 .path("new")
@@ -196,7 +196,7 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
-    @InSequence(9)
+    @InSequence(5)
     public void deleteNonExistentAccount() {
         Response response = client.target(uri).path("api").path("accounts")
                 .path("nonexistent")

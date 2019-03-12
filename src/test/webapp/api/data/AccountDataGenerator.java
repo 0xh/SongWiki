@@ -19,6 +19,7 @@ public class AccountDataGenerator extends DataGenerator {
     public void generateTestData(@Observes @Initialized(ApplicationScoped.class) final Object event) {
         Account account = new Account();
         account.setUsername("test");
+        account.setPassword("testPassword");
         account.setEmail("test@test.nl");
         account.setAge(21);
 

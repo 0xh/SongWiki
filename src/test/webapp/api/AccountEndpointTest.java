@@ -95,6 +95,7 @@ public class AccountEndpointTest extends BaseClass {
         // Expect a successful database call with the predefined entries
         assertEquals(response.getStatus(), 200);
         assertEquals(fetchedAccount.getUsername(), "test");
+        assertEquals(fetchedAccount.getPassword(), "testPassword");
         assertEquals(fetchedAccount.getEmail(), "test@test.nl");
         assertEquals(fetchedAccount.getAge(), 21);
     }
@@ -117,6 +118,7 @@ public class AccountEndpointTest extends BaseClass {
     public void saveAccount() {
         Account account = new Account();
         account.setUsername("new");
+        account.setPassword("testPassword");
         account.setEmail("new@test.com");
         account.setAge(44);
 
@@ -134,6 +136,7 @@ public class AccountEndpointTest extends BaseClass {
     public void saveAlreadyExistingAccount() {
         Account account = new Account();
         account.setUsername("new");
+        account.setPassword("testPassword");
         account.setEmail("new@test.com");
         account.setAge(44);
 
@@ -150,6 +153,7 @@ public class AccountEndpointTest extends BaseClass {
     public void updateAccount() {
         Account account = new Account();
         account.setUsername("new");
+        account.setPassword("testPassword");
         account.setEmail("new2@test.nl");
         account.setAge(55);
 
@@ -170,6 +174,7 @@ public class AccountEndpointTest extends BaseClass {
     public void updateNonExistentAccount() {
         Account account = new Account();
         account.setUsername("wrong");
+        account.setPassword("testPassword");
         account.setEmail("wrong@test.nl");
         account.setAge(55);
 

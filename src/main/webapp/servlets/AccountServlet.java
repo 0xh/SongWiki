@@ -20,11 +20,13 @@ public class AccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String emailAddress = request.getParameter("email_address");
+        String password = request.getParameter("password");
         int age = Integer.parseInt(request.getParameter("age"));
 
         Account account = new Account();
         account.setUsername(username);
         account.setEmail(emailAddress);
+        account.setPassword(password);
         account.setAge(age);
 
         accountController.save(account);

@@ -10,6 +10,7 @@
     <form method="post" action="${pageContext.request.contextPath}/account">
         <input type="text" name="username" placeholder="Enter username" /> <br />
         <input type="text" name="email_address" placeholder="Enter email address" /> <br />
+        <input type="password" name="password" placeholder="Enter password" /> <br/>
         <input type="number" name="age" placeholder="Enter age" /> <br />
 
         <input type="submit" value="Create" />

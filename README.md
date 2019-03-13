@@ -72,3 +72,9 @@ Endpoint classes need to manually throw exceptions when an error occurs.
 If not thrown, Jersey returns status codes in the 200 range.  
 For example, 204 is returned when an object is null instead of the expected 404.  
 [Reference](https://stackoverflow.com/a/22869076)
+
+## References
+These are several crucial resources I came to depend on during the creation of this application:
+
+- [Hibernate cascade types with examples](https://vladmihalcea.com/a-beginners-guide-to-jpa-and-hibernate-cascade-types/)
+- [Hibernate one to many relationships](https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/)

@@ -13,6 +13,9 @@
         <input type="password" name="password" placeholder="Enter password" /> <br/>
         <input type="number" name="age" placeholder="Enter age" /> <br />
 
+        <input type="checkbox" name="is_admin" id="isAdmin" />
+        <label for="isAdmin">Admin privileges</label> <br/>
+
         <input type="submit" value="Create" />
     </form>
 </body>

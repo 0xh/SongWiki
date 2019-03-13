@@ -2,6 +2,7 @@ package servlets;
 
 import controllers.AccountController;
 import entities.Account;
+import entities.Role;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -22,12 +23,17 @@ public class AccountServlet extends HttpServlet {
         String emailAddress = request.getParameter("email_address");
         String password = request.getParameter("password");
         int age = Integer.parseInt(request.getParameter("age"));
+        String[] isAdminCheckbox = request.getParameterValues("is_admin");
 
         Account account = new Account();
         account.setUsername(username);
         account.setEmail(emailAddress);
         account.setPassword(password);
         account.setAge(age);
+
+        if (isAdminCheckbox[0].equals("on")) {
+            account.addRole(new Role("admin"));
+        }
 
         accountController.save(account);
 

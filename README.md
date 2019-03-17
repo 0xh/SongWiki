@@ -23,17 +23,21 @@ Resources -> JDBC -> JDBC Resources:
 * JNDI name: jdbc/JEAPostgreSQLPool
 
 Resources -> JDBC -> JDBC Connection Pools:
-- General:
-    * Pool name: JEAPostgreSQLPool
-    * Resource type: javax.sql.ConnectionPoolDataSource
-    * Datasource Classname: org.postgresql.ds.PGConnectionPoolDataSource
-    * Additional default settings
+#### General
+| Property             | Value                                        |
+|----------------------|----------------------------------------------|
+| Pool name            | JEAPostgreSQLPool                            |
+| Resource type        | javax.sql.ConnectionPoolDataSource           |
+| Datasource Classname | org.postgresql.ds.PGConnectionPoolDataSource |
+
+... the rest is kept at the default setting
     
-- Additional Properties:
-    * password: your_database_password_here
-    * serverName: localhost
-    * user: postgres
-    * databaseName: postgres
+#### Additional Properties
+| Property     | Value                       |
+|--------------|-----------------------------|
+| password     | your_database_password_here |
+| user         | postgres                    |
+| databaseName | postgres                    |
 
 ### :heavy_check_mark: Testing
 This application is setup to have a managed Payara Server running when tests are executed.
@@ -50,17 +54,21 @@ Resources -> JDBC -> JDBC Resources:
 * JNDI name: jdbc/JEAPostgreSQLTestPool
 
 Resources -> JDBC -> JDBC Connection Pools:
-- General:
-    * Pool name: JEAPostgreSQLTestPool
-    * Resource type: javax.sql.ConnectionPoolDataSource
-    * Datasource Classname: org.postgresql.ds.PGConnectionPoolDataSource
-    * Additional default settings
+#### General
+| Property             | Value                                        |
+|----------------------|----------------------------------------------|
+| Pool name            | JEAPostgreSQLTestPool                        |
+| Resource type        | javax.sql.ConnectionPoolDataSource           |
+| Datasource Classname | org.postgresql.ds.PGConnectionPoolDataSource |
+
+... the rest is kept at the default setting
     
-- Additional Properties:
-    * password: your_database_password_here
-    * serverName: localhost
-    * user: postgres
-    * databaseName: postgres_test
+#### Additional Properties
+| Property     | Value                       |
+|--------------|-----------------------------|
+| password     | your_database_password_here |
+| user         | postgres                    |
+| databaseName | postgres_test               |
 
 :warning: take note of the arquillian.xml file in `test/resources/`.  
 The `glassFishHome` property should be set to the local copy of Payara to run the tests with!  

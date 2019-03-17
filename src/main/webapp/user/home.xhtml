@@ -8,5 +8,35 @@
     <h:form>
         <h:commandButton action="#{jaasLogout.logOut()}" value="Log out" />
     </h:form>
+
+    <h:outputLabel value="Your account information:"/>
+
+    <h:form>
+        <h:dataTable value="#{accountBean.account}" var="account">
+
+            <h:column>
+                <f:facet name="header">Username</f:facet>
+                <h:inputText value="#{account.username}" rendered="#{accountBean.canEdit}" />
+                <h:outputText value="#{account.username}" rendered="#{not accountBean.canEdit}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Email address</f:facet>
+                <h:inputText value="#{account.email}" rendered="#{accountBean.canEdit}" />
+                <h:outputText value="#{account.email}" rendered="#{not accountBean.canEdit}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Age</f:facet>
+                <h:inputText value="#{account.age}" rendered="#{accountBean.canEdit}" />
+                <h:outputText value="#{account.age}" rendered="#{not accountBean.canEdit}" />
+            </h:column>
+
+        </h:dataTable>
+
+        <h:commandButton action="#{accountBean.editAccount()}" value="Edit account information" rendered="#{not accountBean.canEdit}" />
+        <h:commandButton action="#{accountBean.saveAccount()}" value="Save information" rendered="#{accountBean.canEdit}" />
+
+    </h:form>
 </f:view>
 </html>

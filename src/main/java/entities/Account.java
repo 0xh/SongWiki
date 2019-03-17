@@ -5,8 +5,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Entity
 @NamedQueries({
@@ -29,14 +27,8 @@ public class Account {
     @Max(value = 130, message = "Age should not be greater than 130")
     private int age;
 
-    // Cascading with orphanRemoval makes sure the corresponding roles are deleted
-    // when an account is deleted
-    @OneToMany(
-        mappedBy = "account",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
-    )
-    private Collection<Role> roles = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.user;
 
     public String getUsername() {
         return username;
@@ -66,23 +58,10 @@ public class Account {
         this.age = age;
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return this.role;
     }
-
-    public void addRole(Role role) {
-        this.roles.add(role);
-        role.setAccount(this);
-    }
-
-    public void removeRole(Role role) {
-        this.roles.remove(role);
-        role.setAccount(null);
-    }
-
-    public Account() {
-        Role defaultRole = new Role("user");
-        defaultRole.setAccount(this);
-        roles.add(defaultRole);
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

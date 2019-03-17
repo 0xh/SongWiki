@@ -1,5 +1,7 @@
 package servlets;
 
+import com.google.common.base.Charsets;
+import com.google.common.hash.Hashing;
 import controllers.AccountController;
 import entities.Account;
 import entities.Role;
@@ -25,20 +27,22 @@ public class AccountServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
         String[] isAdminCheckbox = request.getParameterValues("is_admin");
 
+        String hashedPassword = Hashing.sha256().hashString(password, Charsets.UTF_8).toString();
+
         Account account = new Account();
         account.setUsername(username);
         account.setEmail(emailAddress);
-        account.setPassword(password);
+        account.setPassword(hashedPassword);
         account.setAge(age);
 
-        if (isAdminCheckbox[0].equals("on")) {
-            account.addRole(new Role("admin"));
+        if (isAdminCheckbox != null && isAdminCheckbox[0].equals("on")) {
+            account.setRole(Role.admin);
         }
 
         accountController.save(account);
 
         request.setAttribute("account", account);
 
-        request.getRequestDispatcher("/createAccount.jsp").forward(request, response);
+        request.getRequestDispatcher("/accountCreated.jsp").forward(request, response);
     }
 }

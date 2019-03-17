@@ -4,6 +4,7 @@ import api.AccountEndpoint;
 import api.config.ApplicationConfig;
 import controllers.AccountController;
 import entities.Account;
+import entities.Role;
 import interceptors.LoggingInterceptor;
 import interfaces.IAccountController;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -49,6 +50,7 @@ public class AccountEndpointTest extends BaseClass {
                 .addClass(AccountController.class)
                 .addClass(AccountRepository.class)
                 .addClass(Account.class)
+                .addClass(Role.class)
                 .addClass(EntityManager.class)
                 .addClass(LoggingInterceptor.class)
                 .addClass(DataGenerator.class)

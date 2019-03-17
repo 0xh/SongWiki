@@ -153,22 +153,60 @@ public class AccountEndpointTest extends BaseClass {
     @Test
     @InSequence(3)
     public void setDefaultRole() {
-        Account account = new Account();
+        String userName = "roleTest";
 
-        assertEquals(account.getRole(), Role.user);
+        Account account = new Account();
+        account.setUsername(userName);
+        account.setPassword("testPassword");
+        account.setEmail("role@test.com");
+        account.setAge(44);
+
+        client.target(uri).path("api").path("accounts")
+                .request()
+                .put(Entity.json(account));
+
+        Response response = client.target(uri).path("api").path("accounts")
+                .path(userName)
+                .request()
+                .get();
+
+        // Parse the response to String as it's a JSON object
+        String accountJson = response.readEntity(String.class);
+
+        // Parse the account from JSON
+        Account fetchedAccount = gson.fromJson(accountJson, Account.class);
+
+        assertEquals(fetchedAccount.getRole(), Role.user);
     }
 
     @Test
     @InSequence(3)
     public void setDifferentRole() {
+        String userName = "roleTest2";
+
         Account account = new Account();
+        account.setUsername(userName);
+        account.setPassword("testPassword");
+        account.setEmail("role2@test.com");
+        account.setAge(44);
         account.setRole(Role.admin);
 
-        assertEquals(account.getRole(), Role.admin);
+        client.target(uri).path("api").path("accounts")
+                .request()
+                .put(Entity.json(account));
 
-        account.setRole(Role.moderator);
+        Response response = client.target(uri).path("api").path("accounts")
+                .path(userName)
+                .request()
+                .get();
 
-        assertEquals(account.getRole(), Role.moderator);
+        // Parse the response to String as it's a JSON object
+        String accountJson = response.readEntity(String.class);
+
+        // Parse the account from JSON
+        Account fetchedAccount = gson.fromJson(accountJson, Account.class);
+
+        assertEquals(fetchedAccount.getRole(), Role.admin);
     }
 
     @Test

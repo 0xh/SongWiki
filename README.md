@@ -8,9 +8,10 @@ The following tools are used for the implementation of SongWiki:
 - Maven shrinkwrap resolver (only including necessary code during integration tests)
 - Jersey (RESTful Web Services framework with JAX-RS API implementation)
 - Hibernate (ORM tool)
-- Java EE
+- Java EE and several of its API's
 - GSON (easy JSON serialization/deserialization)
 - Maven Cargo (maven deployments of application server)
+- Guava (Google's java libraries containing hashing functionality)
 
 ## :wrench: Configuration application server
 This project uses Payara as application server.  

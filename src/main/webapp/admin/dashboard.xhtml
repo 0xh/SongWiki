@@ -10,14 +10,7 @@
 
     <h:outputLabel value="This dashboard is only accessible to admins" />
 
-    <h:dataTable id="accountTable"
-                 columnClasses="list-column-center,
-        list-column-right, list-column-center,
-        list-column-right" headerClass="list-header"
-                 rowClasses="list-row"
-                 styleClass="list-background"
-                 value="#{accountController.all}"
-                 var="account">
+    <h:dataTable value="#{accountController.all}" var="account">
 
         <h:column>
             <f:facet name="header">

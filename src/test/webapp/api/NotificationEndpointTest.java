@@ -71,9 +71,9 @@ public class NotificationEndpointTest extends BaseClass {
         // Parse an array of accounts from the given JSON
         Notification[] notifications = gson.fromJson(notificationsJson, Notification[].class);
 
-        assertEquals(response.getStatus(), Response.Status.OK.getStatusCode());
-        assertEquals(notifications.length, 1);
-        assertEquals(notifications[0].getMessage(), "Test message");
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        assertEquals(1, notifications.length);
+        assertEquals("Test message", notifications[0].getMessage());
     }
 
     @Test
@@ -87,8 +87,8 @@ public class NotificationEndpointTest extends BaseClass {
         String notificationJSON = response.readEntity(String.class);
         Notification parsedNotification = gson.fromJson(notificationJSON, Notification.class);
 
-        assertEquals(response.getStatus(), 200);
-        assertEquals(parsedNotification.getMessage(), "Test message");
+        assertEquals(200, response.getStatus());
+        assertEquals("Test message", parsedNotification.getMessage());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class NotificationEndpointTest extends BaseClass {
                 .request()
                 .get();
 
-        assertEquals(response.getStatus(), 404);
+        assertEquals(404, response.getStatus());
     }
 
     @Test
@@ -114,7 +114,7 @@ public class NotificationEndpointTest extends BaseClass {
 
         // Expect a 204: No Content as saving the account doesn't return anything
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 204);
+        assertEquals(204, response.getStatus());
     }
 
     @Test
@@ -129,7 +129,7 @@ public class NotificationEndpointTest extends BaseClass {
                 .post(Entity.json(notification));
 
         // Expect a 500: Server Error as the notification is already present in the database
-        assertEquals(response.getStatus(), 500);
+        assertEquals(500, response.getStatus());
     }
 
     @Test
@@ -145,7 +145,7 @@ public class NotificationEndpointTest extends BaseClass {
 
         // Expect a 204: No Content as saving the notification doesn't return anything
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 204);
+        assertEquals(204, response.getStatus());
     }
 
     /**
@@ -163,7 +163,7 @@ public class NotificationEndpointTest extends BaseClass {
                 .put(Entity.json(notification));
 
         // Expect a 500: Server Error as the specified notification doesn't exist
-        assertEquals(response.getStatus(), 500);
+        assertEquals(500, response.getStatus());
     }
 
     @Test
@@ -176,7 +176,7 @@ public class NotificationEndpointTest extends BaseClass {
 
         // Expect a 204: No Content as saving the notification doesn't return anything
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 204);
+        assertEquals(204, response.getStatus());
     }
 
     @Test
@@ -188,7 +188,7 @@ public class NotificationEndpointTest extends BaseClass {
                 .delete();
 
         // Expect a 500: Server Error as the specified notification doesn't exist
-        assertEquals(response.getStatus(), 500);
+        assertEquals(500, response.getStatus());
     }
 
 }

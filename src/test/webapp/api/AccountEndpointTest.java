@@ -74,9 +74,9 @@ public class AccountEndpointTest extends BaseClass {
         // Parse an array of accounts from the given JSON
         Account[] accounts = gson.fromJson(accountsJson, Account[].class);
 
-        assertEquals(response.getStatus(), 200);
-        assertEquals(accounts.length, 1);
-        assertEquals(accounts[0].getUsername(), "test");
+        assertEquals(200, response.getStatus());
+        assertEquals(1, accounts.length);
+        assertEquals("test", accounts[0].getUsername());
     }
 
     @Test
@@ -95,11 +95,11 @@ public class AccountEndpointTest extends BaseClass {
         Account fetchedAccount = gson.fromJson(accountJson, Account.class);
 
         // Expect a successful database call with the predefined entries
-        assertEquals(response.getStatus(), 200);
-        assertEquals(fetchedAccount.getUsername(), "test");
-        assertEquals(fetchedAccount.getPassword(), "testPassword");
-        assertEquals(fetchedAccount.getEmail(), "test@test.nl");
-        assertEquals(fetchedAccount.getAge(), 21);
+        assertEquals(200, response.getStatus());
+        assertEquals("test", fetchedAccount.getUsername());
+        assertEquals("testPassword", fetchedAccount.getPassword());
+        assertEquals("test@test.nl", fetchedAccount.getEmail());
+        assertEquals(21, fetchedAccount.getAge());
     }
 
     @Test
@@ -112,7 +112,7 @@ public class AccountEndpointTest extends BaseClass {
                 .get();
 
         // Expect a 404: Not Found status code
-        assertEquals(response.getStatus(), 404);
+        assertEquals(404, response.getStatus());
     }
 
     @Test
@@ -130,7 +130,7 @@ public class AccountEndpointTest extends BaseClass {
 
         // Expect a 204: No Content as saving the account doesn't return anything
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 204);
+        assertEquals(204, response.getStatus());
     }
 
     @Test
@@ -147,7 +147,7 @@ public class AccountEndpointTest extends BaseClass {
                 .post(Entity.json(account));
 
         // Expect a 500: Server Error as the account is already present in the database
-        assertEquals(response.getStatus(), 500);
+        assertEquals(500, response.getStatus());
     }
 
     @Test
@@ -176,7 +176,7 @@ public class AccountEndpointTest extends BaseClass {
         // Parse the account from JSON
         Account fetchedAccount = gson.fromJson(accountJson, Account.class);
 
-        assertEquals(fetchedAccount.getRole(), Role.user);
+        assertEquals(Role.user, fetchedAccount.getRole());
     }
 
     @Test
@@ -206,7 +206,7 @@ public class AccountEndpointTest extends BaseClass {
         // Parse the account from JSON
         Account fetchedAccount = gson.fromJson(accountJson, Account.class);
 
-        assertEquals(fetchedAccount.getRole(), Role.admin);
+        assertEquals(Role.admin, fetchedAccount.getRole());
     }
 
     @Test
@@ -224,7 +224,7 @@ public class AccountEndpointTest extends BaseClass {
 
         // Expect a 204: No Content as saving the account doesn't return anything
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 204);
+        assertEquals(204, response.getStatus());
     }
 
     /**
@@ -245,7 +245,7 @@ public class AccountEndpointTest extends BaseClass {
 
         // Expect a 500: Server Error as the specified account doesn't exist
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 500);
+        assertEquals(500, response.getStatus());
     }
 
     @Test
@@ -258,7 +258,7 @@ public class AccountEndpointTest extends BaseClass {
 
         // Expect a 204: No Content as saving the account doesn't return anything
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(response.getStatus(), 204);
+        assertEquals(204, response.getStatus());
     }
 
     @Test
@@ -270,6 +270,6 @@ public class AccountEndpointTest extends BaseClass {
                 .delete();
 
         // Expect a 500: Server Error as the specified account doesn't exist
-        assertEquals(response.getStatus(), 500);
+        assertEquals(500, response.getStatus());
     }
 }

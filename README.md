@@ -67,6 +67,37 @@ The `glassFishHome` property should be set to the local copy of Payara to run th
 Currenty, the Payara server is expected to live one directory above the source code (denoted by the `../`).  
 If this is not set correctly the application won't find the server to be deployed to and therefor won't run!
 
+### :shield: Security  
+#### Application  
+The main application is secured using JAAS (Java Authentication and Authorization Service).  
+This maps the username and password inserted in the login form to the account and role tables in the database.
+
+The following files play a role in the security aspect (location starting from src/main/webapp):
+* `META-INF/glassfish-web.xml` for mapping of the application roles to the database roles
+* `META-INF/web.xml`Realm configuration specified in the application server and directory/file constraints
+* `login.xhtml` the login page to redirect to if the principal doesn't have the required permissions
+* `loginError.xhtml` the page to redirect to when the form details don't match up
+
+To make JAAS work there are a few necessary Payara settings.  
+A new realm with a name of 'SongWikiRealm' has to be created at Configurations -> server-config -> Security -> Realms.  
+This realm is configured with the following values:
+
+| Property          | Value                                        |
+|-------------------|----------------------------------------------|
+| JAAS Context      | jdbcRealm                                    |
+| JNDI              | jdbc/JEAPostgreSQLPool                       |
+| User Table        | account                                      |
+| User Name Column  | username                                     |
+| Password Column   | password                                     |
+| Group Table       | account (the role is saved as an enum value) |
+| Group Name Column | role                                         |
+
+The default password hashing expected by Payara is SHA-265.  
+This is provided by Google's Guava dependency by default.
+
+#### REST endpoints  
+The REST endpoints are secured using JWT ([JSON Web Tokens](https://jwt.io/)).
+
 ## :round_pushpin: Endpoint must-knowns
 Endpoint classes need to manually throw exceptions when an error occurs.  
 If not thrown, Jersey returns status codes in the 200 range.  
@@ -78,3 +109,4 @@ These are several crucial resources I came to depend on during the creation of t
 
 - [Hibernate cascade types with examples](https://vladmihalcea.com/a-beginners-guide-to-jpa-and-hibernate-cascade-types/)
 - [Hibernate one to many relationships](https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/)
+- [JAAS configuration video](https://www.youtube.com/watch?v=1xsU6juUZd0)

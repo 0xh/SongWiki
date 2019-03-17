@@ -4,9 +4,11 @@ import entities.Notification;
 import interfaces.INotificationController;
 import repositories.NotificationRepository;
 
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import java.util.List;
 
+@Model
 public class NotificationController implements INotificationController {
 
     @Inject

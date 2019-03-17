@@ -151,6 +151,27 @@ public class AccountEndpointTest extends BaseClass {
     }
 
     @Test
+    @InSequence(3)
+    public void setDefaultRole() {
+        Account account = new Account();
+
+        assertEquals(account.getRole(), Role.user);
+    }
+
+    @Test
+    @InSequence(3)
+    public void setDifferentRole() {
+        Account account = new Account();
+        account.setRole(Role.admin);
+
+        assertEquals(account.getRole(), Role.admin);
+
+        account.setRole(Role.moderator);
+
+        assertEquals(account.getRole(), Role.moderator);
+    }
+
+    @Test
     @InSequence(4)
     public void updateAccount() {
         Account account = new Account();

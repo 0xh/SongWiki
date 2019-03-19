@@ -12,6 +12,7 @@ The following tools are used for the implementation of SongWiki:
 - GSON (easy JSON serialization/deserialization)
 - Maven Cargo (maven deployments of application server)
 - Guava (Google's java libraries containing hashing functionality)
+- JJWT (very popular library for creating and reading JWT tokens)
 
 ## :wrench: Configuration application server
 This project uses Payara as application server.  

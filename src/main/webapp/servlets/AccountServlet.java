@@ -1,10 +1,9 @@
 package servlets;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hashing;
 import controllers.AccountController;
 import entities.Account;
 import entities.Role;
+import utils.PasswordHasher;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,6 +19,9 @@ public class AccountServlet extends HttpServlet {
     @Inject
     private AccountController accountController;
 
+    @Inject
+    private PasswordHasher passwordHasher;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String emailAddress = request.getParameter("email_address");
@@ -27,7 +29,7 @@ public class AccountServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
         String[] isAdminCheckbox = request.getParameterValues("is_admin");
 
-        String hashedPassword = Hashing.sha256().hashString(password, Charsets.UTF_8).toString();
+        String hashedPassword = passwordHasher.hash(password);
 
         Account account = new Account();
         account.setUsername(username);

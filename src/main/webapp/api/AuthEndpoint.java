@@ -1,10 +1,9 @@
 package api;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hashing;
 import controllers.AccountController;
 import entities.Account;
 import utils.JWTUtil;
+import utils.PasswordHasher;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -26,6 +25,9 @@ public class AuthEndpoint {
     @Inject
     private JWTUtil jwtUtil;
 
+    @Inject
+    private PasswordHasher passwordHasher;
+
     @POST
     @Consumes(APPLICATION_FORM_URLENCODED)
     public Response getJWT(@FormParam("username") String username, @FormParam("password") String password) {
@@ -33,7 +35,7 @@ public class AuthEndpoint {
             // Authenticate the user using the credentials provided
             Account account = accountController.find(username);
 
-            String hashedPassword = Hashing.sha256().hashString(password, Charsets.UTF_8).toString();
+            String hashedPassword = passwordHasher.hash(password);
             if (!hashedPassword.equals(account.getPassword()))
                 return Response.status(UNAUTHORIZED).build();
 

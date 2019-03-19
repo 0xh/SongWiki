@@ -2,6 +2,7 @@ package api;
 
 import controllers.AccountController;
 import entities.Account;
+import utils.PasswordHasher;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -12,6 +13,9 @@ public class AccountEndpoint {
 
     @Inject
     private AccountController accountController;
+
+    @Inject
+    private PasswordHasher passwordHasher;
 
     @GET
     public List<Account> getAllAccounts() {
@@ -32,11 +36,15 @@ public class AccountEndpoint {
 
     @POST
     public void saveAccount(Account account) {
+        String hashedPassword = passwordHasher.hash(account.getPassword());
+        account.setPassword(hashedPassword);
         accountController.save(account);
     }
 
     @PUT
     public void updateAccount(Account account) {
+        String hashedPassword = passwordHasher.hash(account.getPassword());
+        account.setPassword(hashedPassword);
         accountController.update(account);
     }
 

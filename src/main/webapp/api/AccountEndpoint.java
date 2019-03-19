@@ -1,7 +1,9 @@
 package api;
 
+import api.filters.JWTTokenNeeded;
 import controllers.AccountController;
 import entities.Account;
+import entities.Role;
 import utils.PasswordHasher;
 
 import javax.inject.Inject;
@@ -42,6 +44,7 @@ public class AccountEndpoint {
     }
 
     @PUT
+    @JWTTokenNeeded(role = Role.admin)
     public void updateAccount(Account account) {
         String hashedPassword = passwordHasher.hash(account.getPassword());
         account.setPassword(hashedPassword);

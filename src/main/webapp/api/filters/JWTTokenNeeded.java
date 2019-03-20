@@ -15,5 +15,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({TYPE, METHOD})
 public @interface JWTTokenNeeded {
     // Default to user role if none is specified
-    Role role() default Role.user;
+    Role[] roles() default { Role.user };
 }

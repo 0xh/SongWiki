@@ -18,6 +18,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 @Provider
 @JWTTokenNeeded
@@ -57,11 +58,11 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
             String roleString = claims.get("role", String.class);
             Role role = Role.valueOf(roleString);
 
-            if (role != classAnnotation.role())
+            if (!Arrays.asList(classAnnotation.roles()).contains(role)) {
                 throw new JwtException(
-                        "You do not have the role of "
-                                + classAnnotation.role() +
-                                "which is required for this call");
+                "You do not have any of the following roles that have permission for this call: "
+                        + Arrays.toString(classAnnotation.roles()));
+            }
         } catch (JwtException e) {
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }

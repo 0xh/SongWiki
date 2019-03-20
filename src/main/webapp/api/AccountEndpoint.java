@@ -44,7 +44,7 @@ public class AccountEndpoint {
     }
 
     @PUT
-    @JWTTokenNeeded(role = Role.admin)
+    @JWTTokenNeeded(roles = { Role.user, Role.admin })
     public void updateAccount(Account account) {
         String hashedPassword = passwordHasher.hash(account.getPassword());
         account.setPassword(hashedPassword);

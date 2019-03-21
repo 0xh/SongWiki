@@ -14,9 +14,6 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:8080/JEA",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",

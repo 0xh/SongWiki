@@ -6,7 +6,7 @@
 
     <container qualifier="glassfish" default="true">
         <configuration>
-            <property name="glassFishHome">../payara5</property>
+            <property name="glassFishHome">../../payara5</property>
         </configuration>
     </container>
 

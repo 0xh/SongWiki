@@ -74,7 +74,7 @@ Resources -> JDBC -> JDBC Connection Pools:
 
 :warning: take note of the arquillian.xml file in `test/resources/`.  
 The `glassFishHome` property should be set to the local copy of Payara to run the tests with!  
-Currenty, the Payara server is expected to live one directory above the source code (denoted by the `../`).  
+Currenty, the Payara server is expected to live two directories above the source code (denoted by the `../../`).  
 If this is not set correctly the application won't find the server to be deployed to and therefor won't run!
 
 ### :shield: Security  

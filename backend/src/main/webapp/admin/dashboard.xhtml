@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:form>
+        <h:commandButton action="#{jaasLogout.logOut()}" value="Log out" />
+    </h:form>
+
+    <h:outputLabel value="This dashboard is only accessible to admins" />
+
+    <h:dataTable value="#{accountController.all}" var="account">
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Username" />
+            </f:facet>
+            <h:outputText value="#{account.username}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Email address" />
+            </f:facet>
+            <h:outputText value="#{account.email}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Age" />
+            </f:facet>
+            <h:outputText value="#{account.age}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Role" />
+            </f:facet>
+            <h:outputText value="#{account.role}"/>
+        </h:column>
+
+    </h:dataTable>
+</f:view>
+</html>

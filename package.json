@@ -13,7 +13,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:8080/JEA",
+  "proxy": "http://localhost:8080/backend",
   "browserslist": [
     ">0.2%",
     "not dead",

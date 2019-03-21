@@ -17,6 +17,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import repositories.AccountRepository;
+import utils.PasswordHasher;
 import webapp.api.data.AccountDataGenerator;
 import webapp.api.data.DataGenerator;
 
@@ -54,6 +55,7 @@ public class AccountEndpointTest extends BaseClass {
                 .addClass(EntityManager.class)
                 .addClass(LoggingInterceptor.class)
                 .addClass(DataGenerator.class)
+                .addClass(PasswordHasher.class)
                 .addClass(AccountDataGenerator.class)
                 .addAsLibraries(dependencies)
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")

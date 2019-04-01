@@ -8,6 +8,9 @@ import utils.PasswordHasher;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Link;
+import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
 @Path("accounts")
@@ -18,6 +21,9 @@ public class AccountEndpoint {
 
     @Inject
     private PasswordHasher passwordHasher;
+
+    @Context
+    private UriInfo uriInfo;
 
     @GET
     public List<Account> getAllAccounts() {
@@ -30,9 +36,18 @@ public class AccountEndpoint {
     @GET
     @Path("/{username}")
     public Account getSpecificAccount(@PathParam("username") String username) {
-        Account account = accountController.find(username);
 
+        // More information about here: https://www.ibm.com/developerworks/library/mw-1612-gunderson-trs/index.html
+        // TODO: this currently only works with XML, which is not wanted because the frontend parses JSON
+
+        Account account = accountController.find(username);
         if (account == null) throw new NotFoundException();
+
+        account.setSelf(Link.fromUri(uriInfo.getAbsolutePath())
+                .rel("self")
+                .type("GET")
+                .build());
+
         return account;
     }
 

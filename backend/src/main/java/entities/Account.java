@@ -5,8 +5,15 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+import javax.ws.rs.core.Link;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "Account.getAll", query = "SELECT a FROM Account a"),
     @NamedQuery(name = "Account.findOne", query = "select a from Account a where a.username = :username")
@@ -29,6 +36,10 @@ public class Account {
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.user;
+
+    @Transient
+    @XmlJavaTypeAdapter(Link.JaxbAdapter.class)
+    private Link self;
 
     public String getUsername() {
         return username;
@@ -63,5 +74,12 @@ public class Account {
     }
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Link getSelf() {
+        return self;
+    }
+    public void setSelf(Link self) {
+        this.self = self;
     }
 }

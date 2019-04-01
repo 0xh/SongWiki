@@ -23,6 +23,7 @@ public class JWTUtil {
                 .setSubject(account.getUsername())
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 20 * 60000))
                 .claim("role", account.getRole())
                 .signWith(SECRET_KEY)
                 .compact();

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Layout from '../../components/Layout';
+
 class App extends Component {
   state = {
     allAccounts: [],
@@ -14,7 +16,7 @@ class App extends Component {
   render() {
     const { allAccounts } = this.state;
     return (
-      <>
+      <Layout>
         {allAccounts.map((account, index) => (
           <div key={index}>
             <h1>{account.username}</h1>
@@ -22,7 +24,7 @@ class App extends Component {
             <p>{account.age}</p>
           </div>
         ))}
-      </>
+      </Layout>
     );
   }
 }

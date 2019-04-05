@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Layout from '../../components/Layout';
+import Layout from '../components/Layout';
 
-class App extends Component {
+class Home extends Component {
   state = {
     allAccounts: [],
   };
@@ -29,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

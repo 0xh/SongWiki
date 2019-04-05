@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => (
   <nav>
     <h1>
-      <a href="/">SongWiki</a>
+      <Link to="/">SongWiki</Link>
     </h1>
     <ul>
       <li>
-        <a href="/login">Login</a>
+        <Link to="/login">Login</Link>
       </li>
       <li>
-        <a href="/register">Register</a>
+        <Link to="/register">Register</Link>
       </li>
     </ul>
   </nav>

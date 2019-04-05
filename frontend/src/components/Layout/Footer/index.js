@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { FooterStyles } from './styles';
+
 const Footer = () => (
-  <footer>
+  <FooterStyles>
     <p>Some awesome footer content</p>
-  </footer>
+  </FooterStyles>
 );
 
 export default Footer;

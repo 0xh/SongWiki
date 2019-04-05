@@ -1,12 +1,17 @@
 import React from 'react';
 
+import GlobalStyle from '../../styles/globalStyle';
+
+import { ContentWrapper } from './styles';
+
 import Navigation from './Navigation';
 import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <>
+    <GlobalStyle />
     <Navigation />
-    <main>{children}</main>
+    <ContentWrapper>{children}</ContentWrapper>
     <Footer />
   </>
 );

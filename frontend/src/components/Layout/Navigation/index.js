@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { NavStyles, LinkList, LinkItem, StyledLink } from './styles';
+import { NavStyles, LinkList, LinkItem, HomeLink, StyledLink } from './styles';
 
 const Navigation = () => (
   <NavStyles>
     <h1>
-      <StyledLink to="/">SongWiki</StyledLink>
+      <HomeLink to="/">SongWiki</HomeLink>
     </h1>
     <LinkList>
       <LinkItem>

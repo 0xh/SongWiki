@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import WebFont from 'webfontloader';
 
 import theme from './styles/theme';
 
 import Home from './pages/home';
 import * as serviceWorker from './serviceWorker';
+
+WebFont.load({
+  google: {
+    families: ['Open Sans', 'Lato'],
+  },
+});
 
 const AppRouter = () => (
   <ThemeProvider theme={theme}>

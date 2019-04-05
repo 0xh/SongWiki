@@ -6,7 +6,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a, p, h1, h2, h3, h4, h5, h6 {
-    color: ${props => props.theme.textColor}
+    color: ${props => props.theme.textColor};
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', Arial, sans-serif;
+  }
+
+  a, p {
+    font-family: 'Lato', Arial, sans-serif;
   }
 `;
 

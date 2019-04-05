@@ -11,6 +11,7 @@ const LinkList = styled.ul`
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
+  align-items: center;
   list-style-type: none;
 `;
 

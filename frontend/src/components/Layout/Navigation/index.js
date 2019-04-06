@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { NavStyles, LinkList, LinkItem, HomeLink, StyledLink } from './styles';
+import { NavStyles, LinkList, LinkItem, StyledLink } from './styles';
 
 const Navigation = () => (
   <NavStyles>
     <h1>
-      <HomeLink to="/">SongWiki</HomeLink>
+      <StyledLink to="/">SongWiki</StyledLink>
     </h1>
     <LinkList>
       <LinkItem>
         <StyledLink to="/login">Login</StyledLink>
       </LinkItem>
-      <LinkItem>
+      <LinkItem hasBorder>
         <StyledLink to="/register">Register</StyledLink>
       </LinkItem>
     </LinkList>

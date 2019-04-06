@@ -17,19 +17,22 @@ const LinkList = styled.ul`
 
 const LinkItem = styled.li`
   margin-left: 15px;
-`;
-
-const HomeLink = styled(Link)`
-  text-decoration: none;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
   padding: 7.5px 15px;
+  border-radius: 5px;
+
+  ${({ hasBorder, theme }) =>
+    hasBorder &&
+    `
+    border: 1.5px solid ${theme.primaryColor};
+  `};
 
   &:hover {
     background-color: ${props => props.theme.primaryColor};
   }
 `;
 
-export { NavStyles, LinkList, LinkItem, HomeLink, StyledLink };
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+export { NavStyles, LinkList, LinkItem, StyledLink };

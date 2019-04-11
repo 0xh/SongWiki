@@ -7,6 +7,7 @@ import WebFont from 'webfontloader';
 import theme from './styles/theme';
 
 import Home from './pages/home';
+import Register from './pages/register';
 import * as serviceWorker from './serviceWorker';
 
 WebFont.load({
@@ -19,6 +20,7 @@ const AppRouter = () => (
   <ThemeProvider theme={theme}>
     <Router>
       <Route exact path="/" component={Home} />
+      <Route exact path="/register" component={Register} />
     </Router>
   </ThemeProvider>
 );

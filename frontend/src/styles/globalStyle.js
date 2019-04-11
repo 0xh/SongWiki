@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.backgroundColor}
   }
 
-  a, p, h1, h2, h3, h4, h5, h6 {
+  a, p, label, h1, h2, h3, h4, h5, h6 {
     color: ${props => props.theme.textColor};
   }
 
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', Arial, sans-serif;
   }
 
-  a, p {
+  a, p, label {
     font-family: 'Lato', Arial, sans-serif;
   }
 `;

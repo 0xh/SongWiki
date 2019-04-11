@@ -23,8 +23,8 @@ public class Account {
     @Email(message = "Email should be valid")
     private String email;
 
-    @Min(value = 13, message = "Age should not be less than 13")
-    @Max(value = 130, message = "Age should not be greater than 130")
+    @Min(value = 13, message = "You must be older than 13 in order to use SongWiki")
+    @Max(value = 130, message = "Did you find the potion of eternal life? Age can't be higher than 130")
     private int age;
 
     @Enumerated(EnumType.STRING)

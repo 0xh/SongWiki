@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 
 class Home extends Component {
   state = {
-    allAccounts: [],
+    allAccounts: null,
   };
 
   componentDidMount() {
@@ -17,13 +17,17 @@ class Home extends Component {
     const { allAccounts } = this.state;
     return (
       <Layout>
-        {allAccounts.map((account, index) => (
-          <div key={index}>
-            <h1>{account.username}</h1>
-            <p>{account.email}</p>
-            <p>{account.age}</p>
-          </div>
-        ))}
+        {allAccounts == null ? (
+          <p>Loading data</p>
+        ) : (
+          allAccounts.map((account, index) => (
+            <div key={index}>
+              <h1>{account.username}</h1>
+              <p>{account.email}</p>
+              <p>{account.age}</p>
+            </div>
+          ))
+        )}
       </Layout>
     );
   }

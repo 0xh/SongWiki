@@ -10,6 +10,8 @@ import Home from './pages/home';
 import Register from './pages/register';
 import * as serviceWorker from './serviceWorker';
 
+import 'normalize.css';
+
 WebFont.load({
   google: {
     families: ['Open Sans', 'Lato'],

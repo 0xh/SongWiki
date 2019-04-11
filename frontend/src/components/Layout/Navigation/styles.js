@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 const NavStyles = styled.nav`
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: ${props => props.theme.maxWidth};
 `;

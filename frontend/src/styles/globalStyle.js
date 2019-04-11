@@ -9,8 +9,8 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.textColor};
   }
 
-  h1, h2, h3, h4, h5, h6, button {
-    font-family: 'Open Sans', Arial, sans-serif;
+  h1, h2, h3, h4, h5, h6, button, input {
+    font-family: 'Open Sans', Arial, sans-serif !important;
   }
 
   a, p, label {

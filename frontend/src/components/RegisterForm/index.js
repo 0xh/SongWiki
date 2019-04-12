@@ -3,6 +3,8 @@ import { Formik, Form, ErrorMessage } from 'formik';
 
 import { Label, Field, Button } from './styles';
 
+import { fetchJWT } from '../../utils/jwt';
+
 const onFormSubmit = (values, { setSubmitting, setErrors }, history) => {
   setSubmitting(true);
 
@@ -16,6 +18,7 @@ const onFormSubmit = (values, { setSubmitting, setErrors }, history) => {
   })
     .then(response => {
       if (response.ok) {
+        fetchJWT(values.username, values.password);
         setSubmitting(false);
         history.push({
           pathname: '/two-factor-auth',

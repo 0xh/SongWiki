@@ -3,6 +3,35 @@ import { Formik, Form, ErrorMessage } from 'formik';
 
 import { Label, Field, Button } from './styles';
 
+const onFormSubmit = (values, { setSubmitting, setErrors }, history) => {
+  setSubmitting(true);
+
+  fetch('/api/accounts', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(values),
+  })
+    .then(response => {
+      if (response.ok) {
+        setSubmitting(false);
+        history.push({
+          pathname: '/two-factor-auth',
+          state: { name: values.username },
+        });
+      } else {
+        throw new Error(response.statusText);
+      }
+    })
+    .catch(error => {
+      setSubmitting(false);
+      // setErrors(transformMyRestApiErrorsToAnObject(error));
+      alert(error);
+    });
+};
+
 const RegisterForm = ({ history }) => (
   <Formik
     initialValues={{
@@ -11,31 +40,9 @@ const RegisterForm = ({ history }) => (
       email: '',
       age: 20,
     }}
-    onSubmit={(values, { setSubmitting, setErrors }) => {
-      setSubmitting(true);
-
-      fetch('/api/accounts', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      })
-        .then(response => {
-          if (response.ok) {
-            setSubmitting(false);
-            history.push('/');
-          } else {
-            throw new Error(response.statusText);
-          }
-        })
-        .catch(error => {
-          setSubmitting(false);
-          // setErrors(transformMyRestApiErrorsToAnObject(error));
-          alert(error);
-        });
-    }}
+    onSubmit={(values, { setSubmitting, setErrors }) =>
+      onFormSubmit(values, { setSubmitting, setErrors }, history)
+    }
     render={({ isSubmitting }) => (
       <Form>
         <Label htmlFor="username">Username</Label>

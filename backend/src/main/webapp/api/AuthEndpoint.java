@@ -2,18 +2,16 @@ package api;
 
 import controllers.AccountController;
 import entities.Account;
+import entities.JWTGenerationRequest;
 import utils.JWTUtil;
 import utils.PasswordHasher;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
-import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
 import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 
 @Path("auth")
@@ -29,13 +27,12 @@ public class AuthEndpoint {
     private PasswordHasher passwordHasher;
 
     @POST
-    @Consumes(APPLICATION_FORM_URLENCODED)
-    public Response getJWT(@FormParam("username") String username, @FormParam("password") String password) {
+    public Response getJWT(JWTGenerationRequest generationRequest) {
         try {
             // Authenticate the user using the credentials provided
-            Account account = accountController.find(username);
+            Account account = accountController.find(generationRequest.getUsername());
 
-            String hashedPassword = passwordHasher.hash(password);
+            String hashedPassword = passwordHasher.hash(generationRequest.getPassword());
             if (!hashedPassword.equals(account.getPassword()))
                 return Response.status(UNAUTHORIZED).build();
 

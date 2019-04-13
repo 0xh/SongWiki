@@ -1,21 +1,15 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 
-import { Label, Field, Button } from './styles';
-
 import { fetchJWT } from '../../utils/jwt';
+import fetch from '../../utils/fetch';
+
+import { Label, Field, Button } from './styles';
 
 const onFormSubmit = (values, { setSubmitting, setErrors }, history) => {
   setSubmitting(true);
 
-  fetch('/api/accounts', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(values),
-  })
+  fetch('/api/accounts', values, 'POST')
     .then(response => {
       if (response.ok) {
         fetchJWT(values.username, values.password);

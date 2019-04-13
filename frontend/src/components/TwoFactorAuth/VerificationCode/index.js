@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import fetch from '../../../utils/fetch';
+
 import { Label, Field, Button } from './styles';
 
 const VerificationCode = ({ name, updateVerificationStatus }) => {
@@ -11,16 +13,7 @@ const VerificationCode = ({ name, updateVerificationStatus }) => {
   };
 
   const check6DigitCode = () => {
-    fetch(`/api/2fa`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: name,
-        verificationCode,
-      }),
-    })
+    fetch(`/api/2fa`, { username: name, verificationCode }, 'POST')
       .then(response => response.text())
       .then(isValid =>
         isValid === 'true'

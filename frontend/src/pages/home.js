@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import fetch from '../utils/fetch';
+
 import Layout from '../components/Layout';
 
 class Home extends Component {

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import fetch from '../../utils/fetch';
+
 const QrCode = ({ name }) => {
   const [qrUrl, setQrUrl] = useState('');
 

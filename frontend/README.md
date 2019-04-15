@@ -2,6 +2,16 @@
 This folder contains the SongWiki frontend source code.  
 The frontend is built with React and bootstrapped by [create-react-app](https://github.com/facebook/create-react-app)
 
+## :shield: Authentication
+Authentication is a core part of the application. It is therefor important to understand how and with what it is implemented.
+
+In order to keep the authentication state throughout the application I opted for the [React Context API](https://reactjs.org/docs/context.html). This API removes the extensive [prop drilling](https://kentcdodds.com/blog/prop-drilling) that has to be done otherwise to pass state to components that are nested deeply. Compared to the popular state management tool [Redux](https://redux.js.org/) it has a few advantages for this specific project:
+
+1. There isn't much global state to keep ahold of. Redux is overkill.
+2. The Context API comes standard with React since version 16.3. No extra libraries needed!
+
+The specification for the provider and consumer can be found in ```src/utils``` and are implemented in the root index and the needed components respectively.
+
 ## :wrench: Setup
 For local development to work correctly between frontend and backend the package.json file contains a `proxy` property. This property makes sure to redirect any unknown requests to the specified URL. This comes in handy when calling the backend API and makes sure CORS errors don't exist.  
 [Source](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)

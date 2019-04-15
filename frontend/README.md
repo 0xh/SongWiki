@@ -2,11 +2,11 @@
 This folder contains the SongWiki frontend source code.  
 The frontend is built with React and bootstrapped by [create-react-app](https://github.com/facebook/create-react-app)
 
-## Setup
+## :wrench: Setup
 For local development to work correctly between frontend and backend the package.json file contains a `proxy` property. This property makes sure to redirect any unknown requests to the specified URL. This comes in handy when calling the backend API and makes sure CORS errors don't exist.  
 [Source](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)
 
-## Available Scripts
+## :page_with_curl: Available Scripts
 
 In the project directory, you can run:
 
@@ -34,4 +34,4 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### Advanced functionality
-Please see the create-react-app documentation for info on how to do advanced functionality like eject etc.
+Please see the create-react-app documentation for info on  advanced functionality like eject etc.

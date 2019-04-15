@@ -5,12 +5,14 @@ import { Label, Field, Button } from '../../styles/formikStyle';
 import { fetchJWT } from '../../utils/jwt';
 import { AuthenticationConsumer } from '../../utils/authenticationContext';
 
-const LoginForm = () => {
-  const onFormSubmit = async (values, { setSubmitting }, setAuthenticated) => {
+const LoginForm = ({ history }) => {
+  const onFormSubmit = (values, { setSubmitting }, setAuthenticated) => {
     setSubmitting(true);
-    await fetchJWT(values.username, values.password);
+    fetchJWT(values.username, values.password);
     setAuthenticated(true);
     setSubmitting(false);
+
+    history.push('/');
   };
 
   return (

@@ -14,7 +14,7 @@ import theme from './styles/theme';
 import Home from './pages/home';
 import Register from './pages/register';
 import Login from './pages/login';
-import TwoFactorAuth from './pages/TwoFactorAuth';
+import TwoFactorAuth from './pages/twoFactorAuth';
 import User from './pages/user';
 
 import * as serviceWorker from './serviceWorker';

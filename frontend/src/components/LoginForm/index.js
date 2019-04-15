@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 
-import { Label, Field, Button } from './styles';
+import { Label, Field, Button } from '../../styles/formikStyle';
 import { fetchJWT } from '../../utils/jwt';
 import { AuthenticationConsumer } from '../../utils/authenticationContext';
 

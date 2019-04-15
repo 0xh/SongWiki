@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import { fetchJWT } from '../../utils/jwt';
 import fetch from '../../utils/fetch';
 
-import { Label, Field, Button } from './styles';
+import { Label, Field, Button } from '../../styles/formikStyle';
 import { AuthenticationConsumer } from '../../utils/authenticationContext';
 
 const RegisterForm = ({ history }) => {

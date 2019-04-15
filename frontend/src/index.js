@@ -8,7 +8,9 @@ import theme from './styles/theme';
 
 import Home from './pages/home';
 import Register from './pages/register';
+import Login from './pages/login';
 import TwoFactorAuth from './pages/TwoFactorAuth';
+
 import * as serviceWorker from './serviceWorker';
 
 import 'normalize.css';
@@ -24,6 +26,7 @@ const AppRouter = () => (
     <Router>
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
+      <Route exact path="/login" component={Login} />
       <Route exact path="/two-factor-auth" component={TwoFactorAuth} />
     </Router>
   </ThemeProvider>

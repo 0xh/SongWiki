@@ -12,7 +12,10 @@ const LoginForm = ({ history }) => {
     setAuthenticated(true);
     setSubmitting(false);
 
-    history.push('/');
+    history.push({
+      pathname: '/two-factor-auth',
+      state: { name: values.username, initialSetup: false },
+    });
   };
 
   return (

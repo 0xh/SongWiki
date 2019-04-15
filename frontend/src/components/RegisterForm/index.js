@@ -23,7 +23,7 @@ const RegisterForm = ({ history }) => {
           setAuthenticated(true);
           history.push({
             pathname: '/two-factor-auth',
-            state: { name: values.username },
+            state: { name: values.username, initialSetup: true },
           });
         } else {
           throw new Error(response.statusText);

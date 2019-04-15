@@ -7,7 +7,7 @@ import VerificationCode from '../components/TwoFactorAuth/VerificationCode';
 const TwoFactorAuth = ({
   history,
   location: {
-    state: { name },
+    state: { name, initialSetup },
   },
 }) => {
   const firstRender = useRef(true);
@@ -28,13 +28,17 @@ const TwoFactorAuth = ({
 
   return (
     <Layout>
-      <h1>Setup Two Factor Authentication</h1>
-      <p>
-        You can set up two factor authentication for {name} now by scanning this
-        QR code with your favourite authenticator app.
-      </p>
+      <h1>{initialSetup && 'Setup'} Two Factor Authentication</h1>
+      {initialSetup ? (
+        <p>
+          You can set up two factor authentication for {name} now by scanning
+          this QR code with your favourite authenticator app.
+        </p>
+      ) : (
+        <p>Use the authenticator code provided by your app to authenticate</p>
+      )}
 
-      <QrCode name={name} />
+      {initialSetup && <QrCode name={name} />}
       <VerificationCode
         name={name}
         updateVerificationStatus={setValidVerificationCode}

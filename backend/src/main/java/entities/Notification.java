@@ -1,8 +1,11 @@
 package entities;
 
+import websockets.listeners.NotificationChangeListener;
+
 import javax.persistence.*;
 
 @Entity
+@EntityListeners(NotificationChangeListener.class)
 @NamedQueries({
         @NamedQuery(name = "Notification.getAll", query = "SELECT n FROM Notification n"),
         @NamedQuery(name = "Notification.findOne", query = "select n from Notification n where n.id = :id")

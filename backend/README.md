@@ -110,10 +110,19 @@ This is provided by Google's Guava dependency by default.
 The REST endpoints are secured using JWT ([JSON Web Tokens](https://jwt.io/)).
 
 ## :round_pushpin: Endpoint must-knowns
+### REST
 Endpoint classes need to manually throw exceptions when an error occurs.  
 If not thrown, Jersey returns status codes in the 200 range.  
 For example, 204 is returned when an object is null instead of the expected 404.  
 [Reference](https://stackoverflow.com/a/22869076)
+
+### Websockets
+The real-time notification functionality is provided by the websocket API in Java EE.
+A JPA entity listener is used to listen for database changes on a specific table.  
+If the listener is called it immediately instructs the corresponding websocket to issue a message.  
+
+Implementation of the websockets and listeners can be found in ```src/webapp/websockets```.  
+Inspiration for the implementation was [this StackOverflow comment](https://stackoverflow.com/a/26323226).
 
 ## References
 These are several crucial resources I came to depend on during the creation of this application:
@@ -123,3 +132,4 @@ These are several crucial resources I came to depend on during the creation of t
 - [JAAS configuration video](https://www.youtube.com/watch?v=1xsU6juUZd0)
 - [JAX-RS security with JWT](https://antoniogoncalves.org/2016/10/03/securing-jax-rs-endpoints-with-jwt/)
 - [GoogleAuth docs](https://drive.google.com/drive/u/0/folders/0BxZtP9CHH-Q6TzRSaWtkQ0pEYk0)
+- [WebSocket implementation](https://stackoverflow.com/a/26323226)

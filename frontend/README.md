@@ -12,6 +12,12 @@ In order to keep the authentication state throughout the application I opted for
 
 The specification for the provider and consumer can be found in ```src/utils``` and are implemented in the root index and the needed components respectively.
 
+## :speech_balloon: Communication
+The frontend of SongWiki uses multiple ways to communicate with the backend:
+
+1. REST endpoint calls: used for general information
+2. WebSockets: used for real-time communication like notifications
+
 ## :wrench: Setup
 For local development to work correctly between frontend and backend the package.json file contains a `proxy` property. This property makes sure to redirect any unknown requests to the specified URL. This comes in handy when calling the backend API and makes sure CORS errors don't exist.  
 [Source](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)

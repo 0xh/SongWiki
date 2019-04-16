@@ -6,6 +6,7 @@ import WebFont from 'webfontloader';
 
 import { AuthenticationProvider } from './utils/authenticationContext';
 import { getJWTToken } from './utils/localStorage';
+import { initializeWebsocket } from './utils/websocket';
 
 import AuthenticatedRoute from './components/AuthenticatedRoute';
 
@@ -29,6 +30,7 @@ WebFont.load({
 
 const AppRouter = () => {
   const [isAuthenticated, setAuthenticated] = useState(getJWTToken() != null);
+  initializeWebsocket();
   return (
     <AuthenticationProvider value={{ isAuthenticated, setAuthenticated }}>
       <ThemeProvider theme={theme}>

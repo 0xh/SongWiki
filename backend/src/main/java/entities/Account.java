@@ -1,5 +1,7 @@
 package entities;
 
+import websockets.listeners.AccountChangeListener;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -7,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
+@EntityListeners(AccountChangeListener.class)
 @NamedQueries({
     @NamedQuery(name = "Account.getAll", query = "SELECT a FROM Account a"),
     @NamedQuery(name = "Account.findOne", query = "select a from Account a where a.username = :username")

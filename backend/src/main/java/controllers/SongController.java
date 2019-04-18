@@ -21,5 +21,10 @@ public class SongController implements ISongController {
         return songRepository.find(id);
     }
 
+    @Override
+    public void save(Song song) {
+        songRepository.save(song);
+    }
+
 
 }

@@ -18,6 +18,7 @@ import repositories.SongRepository;
 import webapp.api.data.DataGenerator;
 import webapp.api.data.SongDataGenerator;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
 
@@ -77,5 +78,22 @@ public class SongEndpointTest extends BaseClass {
         assertEquals(200, response.getStatus());
         assertEquals("test", song.getName());
         assertEquals("https://www.youtube.com/watch?v=TKmGU77INaM", song.getResource());
+    }
+
+    @Test
+    @InSequence(3)
+    public void saveSong() {
+        Song song = new Song();
+        song.setName("additionalSong");
+        song.setResource("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        song.setPublishedAt(System.currentTimeMillis());
+
+        Response response = client.target(uri).path("api").path("songs")
+                .request()
+                .post(Entity.json(song));
+
+        // Expect a 204: No Content as saving the account doesn't return anything
+        // It is successful though, which is why it falls in the 200 range
+        assertEquals(204, response.getStatus());
     }
 }

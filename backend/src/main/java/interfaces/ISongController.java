@@ -7,4 +7,5 @@ import java.util.List;
 public interface ISongController {
     List<Song> getAll();
     Song getSpecificSong(int id);
+    void save(Song song);
 }

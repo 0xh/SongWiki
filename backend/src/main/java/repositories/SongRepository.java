@@ -13,4 +13,9 @@ public class SongRepository {
     public List<Song> getAll() {
         return entityManager.createNamedQuery("Song.getAll", Song.class).getResultList();
     }
+
+    public Song find(int id) {
+        return entityManager.createNamedQuery("Song.findOne", Song.class)
+                .setParameter("id", id).getSingleResult();
+    }
 }

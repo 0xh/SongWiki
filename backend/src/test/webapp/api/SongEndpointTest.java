@@ -62,4 +62,20 @@ public class SongEndpointTest extends BaseClass {
         assertEquals(1, songs.length);
         assertEquals("test", songs[0].getName());
     }
+
+    @Test
+    @InSequence(2)
+    public void getSong() {
+        Response response = client.target(uri).path("api").path("songs")
+                .path("1")
+                .request()
+                .get();
+
+        String accountJson = response.readEntity(String.class);
+        Song song = gson.fromJson(accountJson, Song.class);
+
+        assertEquals(200, response.getStatus());
+        assertEquals("test", song.getName());
+        assertEquals("https://www.youtube.com/watch?v=TKmGU77INaM", song.getResource());
+    }
 }

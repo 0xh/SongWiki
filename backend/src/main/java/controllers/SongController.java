@@ -15,4 +15,11 @@ public class SongController implements ISongController {
     public List<Song> getAll() {
         return songRepository.getAll();
     }
+
+    @Override
+    public Song getSpecificSong(int id) {
+        return songRepository.find(id);
+    }
+
+
 }

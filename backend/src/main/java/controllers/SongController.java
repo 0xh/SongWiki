@@ -26,5 +26,10 @@ public class SongController implements ISongController {
         songRepository.save(song);
     }
 
+    @Override
+    public void update(Song song) {
+        songRepository.update(song);
+    }
+
 
 }

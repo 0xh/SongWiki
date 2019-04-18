@@ -24,4 +24,8 @@ public class SongRepository {
     public void save(Song song) {
         entityManager.persist(song);
     }
+
+    public void update(Song song) {
+        entityManager.merge(song);
+    }
 }

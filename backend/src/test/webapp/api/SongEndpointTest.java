@@ -54,10 +54,10 @@ public class SongEndpointTest extends BaseClass {
                 .get();
 
         // Parse the response to String as it's a JSON object
-        String accountsJson = response.readEntity(String.class);
+        String songJson = response.readEntity(String.class);
 
-        // Parse an array of accounts from the given JSON
-        Song[] songs = gson.fromJson(accountsJson, Song[].class);
+        // Parse an array of songs from the given JSON
+        Song[] songs = gson.fromJson(songJson, Song[].class);
 
         assertEquals(200, response.getStatus());
         assertEquals(1, songs.length);
@@ -72,8 +72,8 @@ public class SongEndpointTest extends BaseClass {
                 .request()
                 .get();
 
-        String accountJson = response.readEntity(String.class);
-        Song song = gson.fromJson(accountJson, Song.class);
+        String songJson = response.readEntity(String.class);
+        Song song = gson.fromJson(songJson, Song.class);
 
         assertEquals(200, response.getStatus());
         assertEquals("test", song.getName());
@@ -92,8 +92,24 @@ public class SongEndpointTest extends BaseClass {
                 .request()
                 .post(Entity.json(song));
 
-        // Expect a 204: No Content as saving the account doesn't return anything
+        // Expect a 204: No Content as saving the song doesn't return anything
         // It is successful though, which is why it falls in the 200 range
+        assertEquals(204, response.getStatus());
+    }
+
+    @Test
+    @InSequence(4)
+    public void updateSong() {
+        Song song = new Song();
+        song.setId(2);
+        song.setName("updatedSong");
+        song.setPublishedAt(System.currentTimeMillis());
+        song.setResource("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+
+        Response response = client.target(uri).path("api").path("songs")
+                .request()
+                .put(Entity.json(song));
+
         assertEquals(204, response.getStatus());
     }
 }

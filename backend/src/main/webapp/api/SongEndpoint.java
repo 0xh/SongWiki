@@ -32,4 +32,9 @@ public class SongEndpoint {
         songController.save(song);
     }
 
+    @PUT
+    public void updateSong(Song song) {
+        songController.update(song);
+    }
+
 }

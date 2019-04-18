@@ -1,6 +1,12 @@
 import React from 'react';
 
-const AuthenticationContext = React.createContext({});
-
-export const AuthenticationProvider = AuthenticationContext.Provider;
-export const AuthenticationConsumer = AuthenticationContext.Consumer;
+export const AuthenticationContext = React.createContext();
+export const AuthenticationProvider = ({
+  children,
+  isAuthenticated,
+  setAuthenticated,
+}) => (
+  <AuthenticationContext.Provider value={{ isAuthenticated, setAuthenticated }}>
+    {children}
+  </AuthenticationContext.Provider>
+);

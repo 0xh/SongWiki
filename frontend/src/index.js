@@ -36,7 +36,10 @@ const AppRouter = () => {
   initializeWebsocket(setNotificationMessage);
 
   return (
-    <AuthenticationProvider value={{ isAuthenticated, setAuthenticated }}>
+    <AuthenticationProvider
+      isAuthenticated={isAuthenticated}
+      setAuthenticated={setAuthenticated}
+    >
       <NotificationProvider
         notificationMessage={notificationMessage}
         setNotificationMessage={setNotificationMessage}

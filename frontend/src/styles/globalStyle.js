@@ -16,6 +16,12 @@ const GlobalStyle = createGlobalStyle`
   a, p, label {
     font-family: 'Lato', Arial, sans-serif;
   }
+
+  ul {
+    font-family: 'Lato', Arial, sans-serif;
+    list-style-type: none;
+    padding: 0;
+  }
 `;
 
 export default GlobalStyle;

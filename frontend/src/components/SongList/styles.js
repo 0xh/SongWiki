@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ListWrapper = styled.ul`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 30px;
 `;
 
 export const SongTile = styled.li`

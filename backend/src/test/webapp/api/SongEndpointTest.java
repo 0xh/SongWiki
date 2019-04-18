@@ -18,9 +18,10 @@ import repositories.SongRepository;
 import webapp.api.data.DataGenerator;
 import webapp.api.data.SongDataGenerator;
 
+import javax.ws.rs.core.Response;
 import java.io.File;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Arquillian.class)
 public class SongEndpointTest extends BaseClass {
@@ -46,6 +47,19 @@ public class SongEndpointTest extends BaseClass {
     @Test
     @InSequence(1)
     public void getAllSongs() {
-        assertTrue(true);
+        // Use the JAX-RS 2.0 Client API to test the endpoint
+        Response response = client.target(uri).path("api").path("songs")
+                .request()
+                .get();
+
+        // Parse the response to String as it's a JSON object
+        String accountsJson = response.readEntity(String.class);
+
+        // Parse an array of accounts from the given JSON
+        Song[] songs = gson.fromJson(accountsJson, Song[].class);
+
+        assertEquals(200, response.getStatus());
+        assertEquals(1, songs.length);
+        assertEquals("test", songs[0].getName());
     }
 }

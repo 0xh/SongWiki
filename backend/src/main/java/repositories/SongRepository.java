@@ -28,4 +28,8 @@ public class SongRepository {
     public void update(Song song) {
         entityManager.merge(song);
     }
+
+    public void delete(Song song) {
+        entityManager.remove(entityManager.contains(song) ? song : entityManager.merge(song));
+    }
 }

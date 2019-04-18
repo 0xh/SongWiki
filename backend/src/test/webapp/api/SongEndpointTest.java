@@ -112,4 +112,17 @@ public class SongEndpointTest extends BaseClass {
 
         assertEquals(204, response.getStatus());
     }
+
+    @Test
+    @InSequence(5)
+    public void deleteSong() {
+        String songId = "2";
+
+        Response response = client.target(uri).path("api").path("songs")
+                .path(songId)
+                .request()
+                .delete();
+
+        assertEquals(204, response.getStatus());
+    }
 }

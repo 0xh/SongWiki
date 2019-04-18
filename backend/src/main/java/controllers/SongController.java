@@ -31,5 +31,11 @@ public class SongController implements ISongController {
         songRepository.update(song);
     }
 
+    @Override
+    public void delete(int id) {
+        Song song = songRepository.find(id);
+        songRepository.delete(song);
+    }
+
 
 }

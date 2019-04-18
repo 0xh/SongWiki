@@ -37,4 +37,10 @@ public class SongEndpoint {
         songController.update(song);
     }
 
+    @DELETE
+    @Path("/{id}")
+    public void deleteSong(@PathParam("id") int id) {
+        songController.delete(id);
+    }
+
 }

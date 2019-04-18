@@ -9,4 +9,5 @@ public interface ISongController {
     Song getSpecificSong(int id);
     void save(Song song);
     void update(Song song);
+    void delete(int id);
 }

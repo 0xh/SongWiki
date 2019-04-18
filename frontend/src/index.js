@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import WebFont from 'webfontloader';
 
 import { AuthenticationProvider } from './utils/authenticationContext';
+import { NotificationProvider } from './utils/notificationContext';
 import { getJWTToken } from './utils/localStorage';
 import { initializeWebsocket } from './utils/websocket';
 
@@ -30,18 +31,26 @@ WebFont.load({
 
 const AppRouter = () => {
   const [isAuthenticated, setAuthenticated] = useState(getJWTToken() != null);
-  initializeWebsocket();
+  const [notificationMessage, setNotificationMessage] = useState('');
+
+  initializeWebsocket(setNotificationMessage);
+
   return (
     <AuthenticationProvider value={{ isAuthenticated, setAuthenticated }}>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/two-factor-auth" component={TwoFactorAuth} />
-          <AuthenticatedRoute exact path="/user" component={User} />
-        </Router>
-      </ThemeProvider>
+      <NotificationProvider
+        notificationMessage={notificationMessage}
+        setNotificationMessage={setNotificationMessage}
+      >
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/two-factor-auth" component={TwoFactorAuth} />
+            <AuthenticatedRoute exact path="/user" component={User} />
+          </Router>
+        </ThemeProvider>
+      </NotificationProvider>
     </AuthenticationProvider>
   );
 };

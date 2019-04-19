@@ -1,12 +1,15 @@
 package entities;
 
+import websockets.listeners.SongChangeListener;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@EntityListeners(SongChangeListener.class)
 @NamedQueries({
-        @NamedQuery(name = "Song.getAll", query = "SELECT s FROM Song s"),
-        @NamedQuery(name = "Song.findOne", query = "select s from Song s where s.id = :id")
+    @NamedQuery(name = "Song.getAll", query = "SELECT s FROM Song s"),
+    @NamedQuery(name = "Song.findOne", query = "select s from Song s where s.id = :id")
 })
 public class Song {
     @Id

@@ -23,11 +23,13 @@ public class SongController implements ISongController {
 
     @Override
     public void save(Song song) {
+        song.setPublishedAt(System.currentTimeMillis());
         songRepository.save(song);
     }
 
     @Override
     public void update(Song song) {
+        song.setPublishedAt(System.currentTimeMillis());
         songRepository.update(song);
     }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 
 import fetch from '../../utils/fetch';
+import { parseVideoId } from '../../utils/youtube';
 
 import { Label, Field, Button } from '../../styles/formikStyle';
 
@@ -9,7 +10,8 @@ const AddSongForm = ({ history }) => {
   const onFormSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
 
-    fetch('/api/songs', values, 'POST');
+    const resource = parseVideoId(values.resource);
+    fetch('/api/songs', { name: values.name, resource }, 'POST');
 
     setSubmitting(false);
 
@@ -31,7 +33,7 @@ const AddSongForm = ({ history }) => {
           <Field type="text" name="name" />
           <ErrorMessage name="name" component="span" />
 
-          <Label htmlFor="resource">Resource link</Label>
+          <Label htmlFor="resource">YouTube link (URL)</Label>
           <Field type="text" name="resource" />
           <ErrorMessage name="resource" component="span" />
 

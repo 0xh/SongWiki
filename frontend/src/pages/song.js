@@ -3,8 +3,6 @@ import YouTube from 'react-youtube';
 
 import Layout from '../components/Layout';
 
-const parseVideoId = resource => resource.split('v=')[1];
-
 const Song = ({
   location: {
     state: { song },
@@ -12,7 +10,7 @@ const Song = ({
 }) => (
   <Layout>
     <h1>{song.name}</h1>
-    <YouTube videoId={parseVideoId(song.resource)} />
+    <YouTube videoId={song.resource} />
   </Layout>
 );
 

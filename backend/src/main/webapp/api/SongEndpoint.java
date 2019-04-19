@@ -14,7 +14,7 @@ public class SongEndpoint {
     private SongController songController;
 
     @GET
-    public List<Song> getAllAccounts() {
+    public List<Song> getAllSongs() {
         List<Song> songList = songController.getAll();
 
         if (songList == null) throw new NotFoundException();

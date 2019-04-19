@@ -4,9 +4,9 @@ import Layout from '../components/Layout';
 import SongList from '../components/SongList';
 import LinkButton from '../components/LinkButton';
 
-const Home = () => (
+const Home = ({ history }) => (
   <Layout>
-    <SongList />
+    <SongList history={history} />
     <LinkButton to="/add-song">Add song</LinkButton>
   </Layout>
 );

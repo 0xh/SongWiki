@@ -18,6 +18,7 @@ import Register from './pages/register';
 import Login from './pages/login';
 import TwoFactorAuth from './pages/twoFactorAuth';
 import AddSong from './pages/addSong';
+import Song from './pages/song';
 import User from './pages/user';
 
 import * as serviceWorker from './serviceWorker';
@@ -52,6 +53,7 @@ const AppRouter = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/two-factor-auth" component={TwoFactorAuth} />
             <Route exact path="/add-song" component={AddSong} />
+            <Route exact path="/song" component={Song} />
             <AuthenticatedRoute exact path="/user" component={User} />
           </Router>
         </ThemeProvider>

@@ -4,7 +4,7 @@ import fetch from '../../utils/fetch';
 
 import { ListWrapper, SongTile, Description } from './styles';
 
-const SongList = () => {
+const SongList = ({ history }) => {
   const [songList, setSongList] = useState([]);
   useEffect(() => {
     fetch('/api/songs')
@@ -15,7 +15,11 @@ const SongList = () => {
   return songList.length > 0 ? (
     <ListWrapper>
       {songList.map((song, index) => (
-        <SongTile key={index} random={index}>
+        <SongTile
+          key={index}
+          random={index}
+          onClick={() => history.push({ pathname: '/song', state: { song } })}
+        >
           <Description>{song.name}</Description>
         </SongTile>
       ))}

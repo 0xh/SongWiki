@@ -10,7 +10,7 @@ const SongList = () => {
     fetch('/api/songs')
       .then(response => response.json())
       .then(json => setSongList(json));
-  });
+  }, []);
 
   return songList.length > 0 ? (
     <ListWrapper>

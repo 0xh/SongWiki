@@ -17,7 +17,7 @@ const SongList = ({ history }) => {
       {songList.map((song, index) => (
         <SongTile
           key={index}
-          random={index}
+          songResource={song.resource}
           onClick={() => history.push({ pathname: '/song', state: { song } })}
         >
           <Description>{song.name}</Description>

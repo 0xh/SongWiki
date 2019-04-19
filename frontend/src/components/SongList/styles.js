@@ -14,7 +14,7 @@ export const SongTile = styled.li`
   margin-bottom: 20px;
   border-radius: 10px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(https://source.unsplash.com/collection/403065/500x500/?sig=${props => props.random});
+    url(https://img.youtube.com/vi/${props => props.songResource}/maxresdefault.jpg);
   background-size: cover;
   cursor: pointer;
 `;

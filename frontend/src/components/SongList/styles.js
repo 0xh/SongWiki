@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 export const ListWrapper = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 `;
 
 export const SongTile = styled.li`
   display: flex;
   width: 49%;
   height: 60vh;
+  margin-bottom: 20px;
   border-radius: 10px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(https://source.unsplash.com/collection/403065/500x500/?sig=${props => props.random});

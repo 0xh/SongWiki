@@ -101,7 +101,7 @@ public class SongEndpointTest extends BaseClass {
     @InSequence(4)
     public void updateSong() {
         Song song = new Song();
-        song.setId(2);
+        song.setSongId(2);
         song.setName("updatedSong");
         song.setPublishedAt(System.currentTimeMillis());
         song.setResource("https://www.youtube.com/watch?v=dQw4w9WgXcQ");

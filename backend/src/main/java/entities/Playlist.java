@@ -6,10 +6,10 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "PlayList.getAll", query = "SELECT p FROM PlayList p"),
-    @NamedQuery(name = "PlayList.findOne", query = "select p from PlayList p where p.playlistId = :id")
+    @NamedQuery(name = "PlayList.getAll", query = "SELECT p FROM Playlist p"),
+    @NamedQuery(name = "PlayList.findOne", query = "select p from Playlist p where p.playlistId = :id")
 })
-public class PlayList {
+public class Playlist {
     @Id
     @GeneratedValue
     private int playlistId;
@@ -59,5 +59,5 @@ public class PlayList {
         song.setPlaylist(null);
     }
 
-    public PlayList() {}
+    public Playlist() {}
 }

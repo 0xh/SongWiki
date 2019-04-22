@@ -25,7 +25,7 @@ public class Song {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "playlist_id")
-    private PlayList playlist;
+    private Playlist playlist;
 
     public int getSongId() {
         return songId;
@@ -53,10 +53,10 @@ public class Song {
         this.resource = resource;
     }
 
-    public PlayList getPlaylist() {
+    public Playlist getPlaylist() {
         return playlist;
     }
-    public void setPlaylist(PlayList playlist) { this.playlist = playlist; }
+    public void setPlaylist(Playlist playlist) { this.playlist = playlist; }
 
     public Song() {}
 }

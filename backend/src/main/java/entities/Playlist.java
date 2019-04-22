@@ -6,8 +6,8 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "PlayList.getAll", query = "SELECT p FROM Playlist p"),
-    @NamedQuery(name = "PlayList.findOne", query = "select p from Playlist p where p.playlistId = :id")
+    @NamedQuery(name = "Playlist.getAll", query = "SELECT p FROM Playlist p"),
+    @NamedQuery(name = "Playlist.findOne", query = "select p from Playlist p where p.playlistId = :id")
 })
 public class Playlist {
     @Id

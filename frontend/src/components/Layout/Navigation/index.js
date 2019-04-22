@@ -1,15 +1,10 @@
 import React, { useContext } from 'react';
 
-import {
-  NavStyles,
-  LinkList,
-  LinkItem,
-  StyledLink,
-  StyledButton,
-} from './styles';
+import { NavStyles, LinkList, LogoLink, Wrapper } from './styles';
+
+import StyledLink from '../../StyledLink';
 
 import { removeJWTToken } from '../../../utils/localStorage';
-
 import { AuthenticationContext } from '../../../utils/authenticationContext';
 
 const logOut = setAuthenticated => {
@@ -24,20 +19,29 @@ const Navigation = () => {
   return (
     <NavStyles>
       <h1>
-        <StyledLink to="/">SongWiki</StyledLink>
+        <LogoLink to="/">SongWiki</LogoLink>
       </h1>
       {isAuthenticated ? (
-        <StyledButton onClick={() => logOut(setAuthenticated)}>
-          Logout
-        </StyledButton>
+        <Wrapper>
+          <StyledLink forNavigation to="/playlists">
+            Playlists
+          </StyledLink>
+          <StyledLink forNavigation onClick={() => logOut(setAuthenticated)}>
+            Logout
+          </StyledLink>
+        </Wrapper>
       ) : (
         <LinkList>
-          <LinkItem>
-            <StyledLink to="/login">Login</StyledLink>
-          </LinkItem>
-          <LinkItem hasBorder>
-            <StyledLink to="/register">Register</StyledLink>
-          </LinkItem>
+          <li>
+            <StyledLink forNavigation to="/login">
+              Login
+            </StyledLink>
+          </li>
+          <li>
+            <StyledLink forNavigation hasBorder to="/register">
+              Register
+            </StyledLink>
+          </li>
         </LinkList>
       )}
     </NavStyles>

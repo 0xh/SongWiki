@@ -17,39 +17,13 @@ const LinkList = styled.ul`
   list-style-type: none;
 `;
 
-const LinkItem = styled.li`
-  margin-left: 15px;
-  padding: 7.5px 15px;
-  border-radius: 5px;
-
-  ${({ hasBorder, theme }) =>
-    hasBorder &&
-    `
-    border: 1.5px solid ${theme.primaryColor};
-  `};
-
-  &:hover {
-    background-color: ${props => props.theme.primaryColor};
-  }
-`;
-
-const StyledLink = styled(Link)`
+const LogoLink = styled(Link)`
   text-decoration: none;
 `;
 
-const StyledButton = styled.button`
-  align-self: center;
-  border-radius: 5px;
-  padding: 7.5px 15px;
-  height: 100%;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${props => props.theme.primaryColor};
-    color: white;
-  }
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
-export { NavStyles, LinkList, LinkItem, StyledLink, StyledButton };
+export { NavStyles, LinkList, LogoLink, Wrapper };

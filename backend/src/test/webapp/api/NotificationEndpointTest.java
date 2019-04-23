@@ -17,6 +17,8 @@ import org.junit.runner.RunWith;
 import repositories.NotificationRepository;
 import webapp.api.data.DataGenerator;
 import webapp.api.data.NotificationDataGenerator;
+import websockets.NotificationSocket;
+import websockets.listeners.NotificationChangeListener;
 
 import javax.persistence.EntityManager;
 import javax.ws.rs.client.Entity;
@@ -49,6 +51,8 @@ public class NotificationEndpointTest extends BaseClass {
                 .addClass(NotificationController.class)
                 .addClass(NotificationRepository.class)
                 .addClass(Notification.class)
+                .addClass(NotificationChangeListener.class)
+                .addClass(NotificationSocket.class)
                 .addClass(EntityManager.class)
                 .addClass(DataGenerator.class)
                 .addClass(NotificationDataGenerator.class)

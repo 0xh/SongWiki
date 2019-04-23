@@ -4,6 +4,7 @@ import api.AccountEndpoint;
 import api.config.ApplicationConfig;
 import controllers.AccountController;
 import entities.Account;
+import entities.Link;
 import entities.Role;
 import interceptors.LoggingInterceptor;
 import interfaces.IAccountController;
@@ -20,6 +21,8 @@ import repositories.AccountRepository;
 import utils.PasswordHasher;
 import webapp.api.data.AccountDataGenerator;
 import webapp.api.data.DataGenerator;
+import websockets.AccountSocket;
+import websockets.listeners.AccountChangeListener;
 
 import javax.persistence.EntityManager;
 import javax.ws.rs.client.Entity;
@@ -51,6 +54,9 @@ public class AccountEndpointTest extends BaseClass {
                 .addClass(AccountController.class)
                 .addClass(AccountRepository.class)
                 .addClass(Account.class)
+                .addClass(AccountChangeListener.class)
+                .addClass(AccountSocket.class)
+                .addClass(Link.class)
                 .addClass(Role.class)
                 .addClass(EntityManager.class)
                 .addClass(LoggingInterceptor.class)

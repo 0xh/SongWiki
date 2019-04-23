@@ -22,8 +22,7 @@ public class Playlist {
     @OneToMany(
         mappedBy = "playlist",
         cascade = CascadeType.ALL,
-        orphanRemoval = true,
-        fetch = FetchType.LAZY
+        orphanRemoval = true
     )
     @JsonbTransient
     private List<Song> songs = new ArrayList<>();

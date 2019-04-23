@@ -1,13 +1,14 @@
 package entities;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Playlist.getAll", query = "SELECT p FROM Playlist p"),
-    @NamedQuery(name = "Playlist.findOne", query = "select p from Playlist p where p.playlistId = :id")
+    @NamedQuery(name = "Playlist.getAll", query = "SELECT p FROM Playlist p LEFT JOIN FETCH p.songs"),
+    @NamedQuery(name = "Playlist.findOne", query = "select p from Playlist p LEFT JOIN FETCH p.songs where p.playlistId = :id")
 })
 public class Playlist {
     @Id
@@ -18,7 +19,13 @@ public class Playlist {
 
     private String description;
 
-    @OneToMany(mappedBy = "playlist", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+        mappedBy = "playlist",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true,
+        fetch = FetchType.LAZY
+    )
+    @JsonbTransient
     private List<Song> songs = new ArrayList<>();
 
     public int getPlaylistId() {

@@ -2,6 +2,7 @@ package entities;
 
 import websockets.listeners.AccountChangeListener;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -13,8 +14,8 @@ import java.util.List;
 @Entity
 @EntityListeners(AccountChangeListener.class)
 @NamedQueries({
-    @NamedQuery(name = "Account.getAll", query = "SELECT a FROM Account a"),
-    @NamedQuery(name = "Account.findOne", query = "select a from Account a where a.username = :username")
+    @NamedQuery(name = "Account.getAll", query = "SELECT a FROM Account a LEFT JOIN FETCH a.playlists"),
+    @NamedQuery(name = "Account.findOne", query = "select a from Account a LEFT JOIN FETCH a.playlists where a.username = :username")
 })
 public class Account {
 
@@ -34,6 +35,14 @@ public class Account {
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.user;
+
+    @OneToMany(
+        mappedBy = "account",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    @JsonbTransient
+    private List<Playlist> playlists = new ArrayList<>();
 
     @Transient
     private List<Link> links = new ArrayList<>();
@@ -73,6 +82,13 @@ public class Account {
         this.role = role;
     }
 
+    public List<Playlist> getPlaylists() {
+        return playlists;
+    }
+    public void setPlaylists(List<Playlist> playlists) {
+        this.playlists = playlists;
+    }
+
     public List<Link> getLinks() {
         return links;
     }
@@ -80,5 +96,15 @@ public class Account {
     public void addLink(String link, String rel) {
         Link newLink = new Link(link, rel);
         links.add(newLink);
+    }
+
+    public void addPlaylist(Playlist playlist) {
+        playlists.add(playlist);
+        playlist.setAccount(this);
+    }
+
+    public void removePlaylist(Playlist playlist) {
+        playlists.remove(playlist);
+        playlist.setAccount(null);
     }
 }

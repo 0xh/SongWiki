@@ -23,7 +23,7 @@ public class Song {
 
     private String resource;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "playlist_id")
     private Playlist playlist;
 

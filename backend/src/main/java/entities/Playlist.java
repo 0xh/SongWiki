@@ -27,6 +27,10 @@ public class Playlist {
     @JsonbTransient
     private List<Song> songs = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "username")
+    private Account account;
+
     public int getPlaylistId() {
         return playlistId;
     }
@@ -53,6 +57,13 @@ public class Playlist {
     }
     public void setSongs(List<Song> songs) {
         this.songs = songs;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void addSong(Song song) {

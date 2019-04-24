@@ -15,4 +15,6 @@ public class Link {
         this.link = link;
         this.rel = rel;
     }
+
+    public Link() {}
 }

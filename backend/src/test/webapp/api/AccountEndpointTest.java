@@ -3,9 +3,7 @@ package webapp.api;
 import api.AccountEndpoint;
 import api.config.ApplicationConfig;
 import controllers.AccountController;
-import entities.Account;
-import entities.Link;
-import entities.Role;
+import entities.*;
 import interceptors.LoggingInterceptor;
 import interfaces.IAccountController;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -22,7 +20,9 @@ import utils.PasswordHasher;
 import webapp.api.data.AccountDataGenerator;
 import webapp.api.data.DataGenerator;
 import websockets.AccountSocket;
+import websockets.SongSocket;
 import websockets.listeners.AccountChangeListener;
+import websockets.listeners.SongChangeListener;
 
 import javax.persistence.EntityManager;
 import javax.ws.rs.client.Entity;
@@ -58,6 +58,10 @@ public class AccountEndpointTest extends BaseClass {
                 .addClass(AccountSocket.class)
                 .addClass(Link.class)
                 .addClass(Role.class)
+                .addClass(Playlist.class)
+                .addClass(Song.class)
+                .addClass(SongChangeListener.class)
+                .addClass(SongSocket.class)
                 .addClass(EntityManager.class)
                 .addClass(LoggingInterceptor.class)
                 .addClass(DataGenerator.class)

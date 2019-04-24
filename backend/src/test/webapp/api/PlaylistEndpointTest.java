@@ -2,9 +2,11 @@ package webapp.api;
 
 import api.PlaylistEndpoint;
 import api.config.ApplicationConfig;
+import controllers.AccountController;
 import controllers.PlaylistController;
-import entities.Playlist;
-import entities.Song;
+import entities.*;
+import interceptors.LoggingInterceptor;
+import interfaces.IAccountController;
 import interfaces.IPlaylistController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -15,9 +17,12 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import repositories.AccountRepository;
 import repositories.PlaylistRepository;
 import webapp.api.data.DataGenerator;
 import webapp.api.data.PlaylistDataGenerator;
+import websockets.AccountSocket;
+import websockets.listeners.AccountChangeListener;
 import websockets.listeners.SongChangeListener;
 
 import javax.ws.rs.client.Entity;
@@ -41,6 +46,16 @@ public class PlaylistEndpointTest extends BaseClass {
                 .addClass(PlaylistController.class)
                 .addClass(PlaylistRepository.class)
                 .addClass(Playlist.class)
+                .addClass(Account.class)
+                .addClass(Role.class)
+                .addClass(Link.class)
+                .addClass(AccountChangeListener.class)
+                .addClass(AccountSocket.class)
+                .addClass(AccountController.class)
+                .addClass(AccountRepository.class)
+                .addClass(IAccountController.class)
+                .addClass(AccountChangeListener.class)
+                .addClass(LoggingInterceptor.class)
                 .addClass(Song.class)
                 .addClass(SongChangeListener.class)
                 .addClass(DataGenerator.class)
@@ -91,6 +106,10 @@ public class PlaylistEndpointTest extends BaseClass {
         Playlist playlist = new Playlist();
         playlist.setName("additionalSong");
         playlist.setDescription("Test description");
+
+        Account account = new Account();
+        account.setUsername("new");
+        playlist.setAccount(account);
 
         Response response = client.target(uri).path("api").path("playlists")
                 .request()

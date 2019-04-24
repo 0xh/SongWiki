@@ -3,8 +3,7 @@ package webapp.api;
 import api.SongEndpoint;
 import api.config.ApplicationConfig;
 import controllers.SongController;
-import entities.Playlist;
-import entities.Song;
+import entities.*;
 import interfaces.ISongController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -18,7 +17,9 @@ import org.junit.runner.RunWith;
 import repositories.SongRepository;
 import webapp.api.data.DataGenerator;
 import webapp.api.data.SongDataGenerator;
+import websockets.AccountSocket;
 import websockets.SongSocket;
+import websockets.listeners.AccountChangeListener;
 import websockets.listeners.SongChangeListener;
 
 import javax.ws.rs.client.Entity;
@@ -44,6 +45,11 @@ public class SongEndpointTest extends BaseClass {
                 .addClass(SongChangeListener.class)
                 .addClass(SongSocket.class)
                 .addClass(Playlist.class)
+                .addClass(Account.class)
+                .addClass(Link.class)
+                .addClass(Role.class)
+                .addClass(AccountChangeListener.class)
+                .addClass(AccountSocket.class)
                 .addClass(DataGenerator.class)
                 .addClass(SongDataGenerator.class)
                 .addAsLibraries(dependencies)

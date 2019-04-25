@@ -129,6 +129,7 @@ These are several crucial resources I came to depend on during the creation of t
 
 - [Hibernate cascade types with examples](https://vladmihalcea.com/a-beginners-guide-to-jpa-and-hibernate-cascade-types/)
 - [Hibernate one to many relationships](https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/)
+- [Hibernate method reference](https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)
 - [JAAS configuration video](https://www.youtube.com/watch?v=1xsU6juUZd0)
 - [JAX-RS security with JWT](https://antoniogoncalves.org/2016/10/03/securing-jax-rs-endpoints-with-jwt/)
 - [GoogleAuth docs](https://drive.google.com/drive/u/0/folders/0BxZtP9CHH-Q6TzRSaWtkQ0pEYk0)

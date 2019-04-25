@@ -23,7 +23,7 @@ public class PlaylistRepository {
     }
 
     public void save(Playlist playlist) {
-        entityManager.persist(playlist);
+        entityManager.persist(entityManager.contains(playlist) ? playlist : entityManager.merge(playlist));
     }
 
     public void update(Playlist playlist) {

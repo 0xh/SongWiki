@@ -1,8 +1,6 @@
 package api;
 
-import controllers.AccountController;
 import controllers.PlaylistController;
-import entities.Account;
 import entities.Playlist;
 
 import javax.inject.Inject;
@@ -13,9 +11,6 @@ import java.util.List;
 public class PlaylistEndpoint {
     @Inject
     private PlaylistController playlistController;
-
-    @Inject
-    private AccountController accountController;
 
     @GET
     public List<Playlist> getAllPlaylists() {
@@ -33,10 +28,6 @@ public class PlaylistEndpoint {
 
     @POST
     public void savePlaylist(Playlist playlist) {
-        String username = playlist.getAccount().getUsername();
-        Account account = accountController.find(username);
-        playlist.setAccount(account);
-        
         playlistController.save(playlist);
     }
 

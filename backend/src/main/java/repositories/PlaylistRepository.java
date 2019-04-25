@@ -22,6 +22,11 @@ public class PlaylistRepository {
                 .setParameter("id", id).getSingleResult();
     }
 
+    public List<Playlist> findByUsername(String username) {
+        return entityManager.createNamedQuery("Playlist.findByUsername", Playlist.class)
+                .setParameter("username", username).getResultList();
+    }
+
     public void save(Playlist playlist) {
         entityManager.persist(entityManager.contains(playlist) ? playlist : entityManager.merge(playlist));
     }

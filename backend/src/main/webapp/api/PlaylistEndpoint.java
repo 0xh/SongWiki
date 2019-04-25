@@ -26,6 +26,12 @@ public class PlaylistEndpoint {
         return playlistController.getSpecificPlaylist(id);
     }
 
+    @GET
+    @Path("/account/{username}")
+    public List<Playlist> getPlaylistsByUsername(@PathParam("username") String username) {
+        return playlistController.getPlaylistsByUsername(username);
+    }
+
     @POST
     public void savePlaylist(Playlist playlist) {
         playlistController.save(playlist);

@@ -23,6 +23,11 @@ public class PlaylistController implements IPlaylistController {
     }
 
     @Override
+    public List<Playlist> getPlaylistsByUsername(String username) {
+        return playlistRepository.findByUsername(username);
+    }
+
+    @Override
     public void save(Playlist playlist) {
         playlistRepository.save(playlist);
     }

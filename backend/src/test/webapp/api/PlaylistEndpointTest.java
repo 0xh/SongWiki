@@ -2,6 +2,7 @@ package webapp.api;
 
 import api.PlaylistEndpoint;
 import api.config.ApplicationConfig;
+import com.google.gson.reflect.TypeToken;
 import controllers.AccountController;
 import controllers.PlaylistController;
 import entities.*;
@@ -28,6 +29,8 @@ import websockets.listeners.SongChangeListener;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -98,6 +101,24 @@ public class PlaylistEndpointTest extends BaseClass {
         assertEquals(200, response.getStatus());
         assertEquals("test", playlist.getName());
         assertEquals("Test description", playlist.getDescription());
+    }
+
+    @Test
+    @InSequence(2)
+    public void getPlaylistByUsername() {
+        String username = "test";
+
+        Response response = client.target(uri).path("api").path("playlists")
+                .path("account").path(username)
+                .request()
+                .get();
+
+        String playlistsJson = response.readEntity(String.class);
+        Type listType = new TypeToken<List<Playlist>>() {}.getType();
+        List<Playlist> playlists = gson.fromJson(playlistsJson, listType);
+
+        assertEquals(200, response.getStatus());
+        assertEquals(0, playlists.size());
     }
 
     @Test

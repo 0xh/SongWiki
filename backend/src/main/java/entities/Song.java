@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @EntityListeners(SongChangeListener.class)
@@ -60,4 +61,21 @@ public class Song {
     public void setPlaylists(List<Playlist> playlist) { this.playlists = playlist; }
 
     public Song() {}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return songId == song.songId &&
+                publishedAt == song.publishedAt &&
+                Objects.equals(name, song.name) &&
+                Objects.equals(resource, song.resource) &&
+                Objects.equals(playlists, song.playlists);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(songId, name, publishedAt, resource, playlists);
+    }
 }

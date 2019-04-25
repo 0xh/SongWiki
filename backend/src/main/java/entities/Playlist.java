@@ -56,7 +56,7 @@ public class Playlist {
         return songs;
     }
     public void setSongs(List<Song> songs) {
-        this.songs = songs;
+        songs.forEach(this::addSong);
     }
 
     public Account getAccount() {

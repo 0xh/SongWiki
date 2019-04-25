@@ -86,7 +86,7 @@ public class Account {
         return playlists;
     }
     public void setPlaylists(List<Playlist> playlists) {
-        this.playlists = playlists;
+        playlists.forEach(this::addPlaylist);
     }
 
     public List<Link> getLinks() {

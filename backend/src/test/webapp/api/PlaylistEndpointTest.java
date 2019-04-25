@@ -107,10 +107,6 @@ public class PlaylistEndpointTest extends BaseClass {
         playlist.setName("additionalSong");
         playlist.setDescription("Test description");
 
-        Account account = new Account();
-        account.setUsername("new");
-        playlist.setAccount(account);
-
         Response response = client.target(uri).path("api").path("playlists")
                 .request()
                 .post(Entity.json(playlist));

@@ -2,7 +2,6 @@ package entities;
 
 import websockets.listeners.AccountChangeListener;
 
-import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -41,7 +40,6 @@ public class Account {
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    @JsonbTransient
     private List<Playlist> playlists = new ArrayList<>();
 
     @Transient

@@ -19,12 +19,7 @@ public class Playlist {
 
     private String description;
 
-    @OneToMany(
-        mappedBy = "playlist",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
-    )
-    @JsonbTransient
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Song> songs = new ArrayList<>();
 
     @ManyToOne
@@ -52,28 +47,20 @@ public class Playlist {
         this.description = description;
     }
 
+    @JsonbTransient
     public List<Song> getSongs() {
         return songs;
     }
     public void setSongs(List<Song> songs) {
-        songs.forEach(this::addSong);
+        this.songs = songs;
     }
 
+    @JsonbTransient
     public Account getAccount() {
         return account;
     }
     public void setAccount(Account account) {
         this.account = account;
-    }
-
-    public void addSong(Song song) {
-        songs.add(song);
-        song.setPlaylist(this);
-    }
-
-    public void removeSong(Song song) {
-        songs.remove(song);
-        song.setPlaylist(null);
     }
 
     public Playlist() {}

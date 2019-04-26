@@ -4,13 +4,16 @@ import fetch from '../../utils/fetch';
 
 import { ListWrapper, SongTile, Description } from './styles';
 
-const SongList = ({ history }) => {
+const SongList = ({ history, providedSongs }) => {
   const [songList, setSongList] = useState([]);
+
   useEffect(() => {
-    fetch('/api/songs')
-      .then(response => response.json())
-      .then(json => setSongList(json));
-  }, []);
+    if (providedSongs == null)
+      fetch('/api/songs')
+        .then(response => response.json())
+        .then(json => setSongList(json));
+    else setSongList(providedSongs);
+  }, [providedSongs]);
 
   return songList.length > 0 ? (
     <ListWrapper>

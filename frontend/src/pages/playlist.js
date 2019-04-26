@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
 import Layout from '../components/Layout';
+import Songlist from '../components/SongList';
 
 import fetch from '../utils/fetch';
 
@@ -7,6 +9,7 @@ const Playlist = ({
   match: {
     params: { playlistId },
   },
+  history,
 }) => {
   const [songs, setSongs] = useState([]);
   const [playlistName, setPlaylistName] = useState('Playlist');
@@ -26,9 +29,7 @@ const Playlist = ({
   return (
     <Layout>
       <h1>Playlist '{playlistName}'</h1>
-      {songs.map((song, index) => (
-        <p key={index}>{song.name}</p>
-      ))}
+      <Songlist history={history} providedSongs={songs} />
     </Layout>
   );
 };

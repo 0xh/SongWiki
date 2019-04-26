@@ -33,4 +33,11 @@ const Button = styled.button`
   }
 `;
 
-export { Label, Field, Button };
+const SongOption = styled.option`
+  &:checked {
+    color: red;
+    background-color: ${props => props.theme.primaryColor};
+  }
+`;
+
+export { Label, Field, Button, SongOption };

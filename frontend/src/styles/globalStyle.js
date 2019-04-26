@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', Arial, sans-serif !important;
   }
 
-  a, p, label {
+  a, p, label, option {
     font-family: 'Lato', Arial, sans-serif;
   }
 

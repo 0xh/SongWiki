@@ -2,8 +2,8 @@ package entities;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 @NamedQueries({
@@ -21,7 +21,7 @@ public class Playlist {
     private String description;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Song> songs = new ArrayList<>();
+    private Collection<Song> songs = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "username")
@@ -49,10 +49,10 @@ public class Playlist {
     }
 
     @JsonbTransient
-    public List<Song> getSongs() {
+    public Collection<Song> getSongs() {
         return songs;
     }
-    public void setSongs(List<Song> songs) {
+    public void setSongs(Collection<Song> songs) {
         this.songs = songs;
     }
 

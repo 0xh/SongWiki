@@ -5,6 +5,7 @@ import entities.Playlist;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import java.util.Collection;
 import java.util.List;
 
 @Path("/playlists")
@@ -28,7 +29,7 @@ public class PlaylistEndpoint {
 
     @GET
     @Path("/account/{username}")
-    public List<Playlist> getPlaylistsByUsername(@PathParam("username") String username) {
+    public Collection<Playlist> getPlaylistsByUsername(@PathParam("username") String username) {
         return playlistController.getPlaylistsByUsername(username);
     }
 

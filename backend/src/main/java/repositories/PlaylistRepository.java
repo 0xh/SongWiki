@@ -5,6 +5,7 @@ import entities.Playlist;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Collection;
 import java.util.List;
 
 @Stateless
@@ -22,7 +23,7 @@ public class PlaylistRepository {
                 .setParameter("id", id).getSingleResult();
     }
 
-    public List<Playlist> findByUsername(String username) {
+    public Collection<Playlist> findByUsername(String username) {
         return entityManager.createNamedQuery("Playlist.findByUsername", Playlist.class)
                 .setParameter("username", username).getResultList();
     }

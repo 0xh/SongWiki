@@ -5,6 +5,7 @@ import interfaces.IPlaylistController;
 import repositories.PlaylistRepository;
 
 import javax.inject.Inject;
+import java.util.Collection;
 import java.util.List;
 
 public class PlaylistController implements IPlaylistController {
@@ -23,7 +24,7 @@ public class PlaylistController implements IPlaylistController {
     }
 
     @Override
-    public List<Playlist> getPlaylistsByUsername(String username) {
+    public Collection<Playlist> getPlaylistsByUsername(String username) {
         return playlistRepository.findByUsername(username);
     }
 

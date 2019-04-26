@@ -8,6 +8,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -40,7 +42,7 @@ public class Account {
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<Playlist> playlists = new ArrayList<>();
+    private Collection<Playlist> playlists = new HashSet<>();
 
     @Transient
     private List<Link> links = new ArrayList<>();
@@ -80,10 +82,10 @@ public class Account {
         this.role = role;
     }
 
-    public List<Playlist> getPlaylists() {
+    public Collection<Playlist> getPlaylists() {
         return playlists;
     }
-    public void setPlaylists(List<Playlist> playlists) {
+    public void setPlaylists(Collection<Playlist> playlists) {
         playlists.forEach(this::addPlaylist);
     }
 

@@ -5,7 +5,7 @@ import entities.Notification;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+import java.util.Collection;
 
 @Stateless
 public class NotificationRepository {
@@ -13,7 +13,7 @@ public class NotificationRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Notification> getAll() {
+    public Collection<Notification> getAll() {
         return entityManager.createNamedQuery("Notification.getAll", Notification.class).getResultList();
     }
 

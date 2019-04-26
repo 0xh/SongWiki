@@ -5,14 +5,14 @@ import entities.Song;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+import java.util.Collection;
 
 @Stateless
 public class SongRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Song> getAll() {
+    public Collection<Song> getAll() {
         return entityManager.createNamedQuery("Song.getAll", Song.class).getResultList();
     }
 

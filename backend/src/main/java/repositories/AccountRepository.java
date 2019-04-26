@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+import java.util.Collection;
 
 @Stateless
 public class AccountRepository {
@@ -15,7 +15,7 @@ public class AccountRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Account> getAll() {
+    public Collection<Account> getAll() {
         return entityManager.createNamedQuery("Account.getAll", Account.class).getResultList();
     }
 

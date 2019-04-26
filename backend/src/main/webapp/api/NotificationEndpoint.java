@@ -5,7 +5,7 @@ import entities.Notification;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import java.util.List;
+import java.util.Collection;
 
 @Path("notifications")
 public class NotificationEndpoint {
@@ -14,7 +14,7 @@ public class NotificationEndpoint {
     private NotificationController notificationController;
 
     @GET
-    public List<Notification> getAllNotifications() {
+    public Collection<Notification> getAllNotifications() {
         return notificationController.getAll();
     }
 

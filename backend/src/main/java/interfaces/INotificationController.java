@@ -2,10 +2,10 @@ package interfaces;
 
 import entities.Notification;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface INotificationController {
-    List<Notification> getAll();
+    Collection<Notification> getAll();
     Notification find(int id);
     void save(Notification notification);
     void update(Notification notification);

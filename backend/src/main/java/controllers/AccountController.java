@@ -6,7 +6,7 @@ import repositories.AccountRepository;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import java.util.List;
+import java.util.Collection;
 
 @Model
 public class AccountController implements IAccountController {
@@ -15,7 +15,7 @@ public class AccountController implements IAccountController {
     private AccountRepository accountRepository;
 
     @Override
-    public List<Account> getAll() {
+    public Collection<Account> getAll() {
         return accountRepository.getAll();
     }
 

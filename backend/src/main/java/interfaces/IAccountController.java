@@ -2,10 +2,10 @@ package interfaces;
 
 import entities.Account;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface IAccountController {
-    List<Account> getAll();
+    Collection<Account> getAll();
     Account find(String username);
     void save(Account account);
     void update(Account account);

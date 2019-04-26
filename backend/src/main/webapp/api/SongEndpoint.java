@@ -5,7 +5,7 @@ import entities.Song;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import java.util.List;
+import java.util.Collection;
 
 @Path("/songs")
 public class SongEndpoint {
@@ -14,8 +14,8 @@ public class SongEndpoint {
     private SongController songController;
 
     @GET
-    public List<Song> getAllSongs() {
-        List<Song> songList = songController.getAll();
+    public Collection<Song> getAllSongs() {
+        Collection<Song> songList = songController.getAll();
 
         if (songList == null) throw new NotFoundException();
         return songList;

@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import java.util.List;
+import java.util.Collection;
 
 @Path("accounts")
 public class AccountEndpoint {
@@ -25,8 +25,8 @@ public class AccountEndpoint {
     private UriInfo uriInfo;
 
     @GET
-    public List<Account> getAllAccounts() {
-        List<Account> accountList = accountController.getAll();
+    public Collection<Account> getAllAccounts() {
+        Collection<Account> accountList = accountController.getAll();
 
         if (accountList == null) throw new NotFoundException();
         return accountList;

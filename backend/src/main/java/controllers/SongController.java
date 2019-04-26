@@ -5,14 +5,14 @@ import interfaces.ISongController;
 import repositories.SongRepository;
 
 import javax.inject.Inject;
-import java.util.List;
+import java.util.Collection;
 
 public class SongController implements ISongController {
     @Inject
     private SongRepository songRepository;
 
     @Override
-    public List<Song> getAll() {
+    public Collection<Song> getAll() {
         return songRepository.getAll();
     }
 

@@ -4,8 +4,8 @@ import websockets.listeners.SongChangeListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
@@ -27,7 +27,7 @@ public class Song {
     private String resource;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "songs")
-    private List<Playlist> playlists = new ArrayList<>();
+    private Collection<Playlist> playlists = new HashSet<>();
 
     public int getSongId() {
         return songId;
@@ -55,10 +55,10 @@ public class Song {
         this.resource = resource;
     }
 
-    public List<Playlist> getPlaylists() {
+    public Collection<Playlist> getPlaylists() {
         return playlists;
     }
-    public void setPlaylists(List<Playlist> playlist) { this.playlists = playlist; }
+    public void setPlaylists(Collection<Playlist> playlist) { this.playlists = playlist; }
 
     public Song() {}
 

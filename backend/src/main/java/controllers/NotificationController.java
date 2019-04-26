@@ -6,7 +6,7 @@ import repositories.NotificationRepository;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import java.util.List;
+import java.util.Collection;
 
 @Model
 public class NotificationController implements INotificationController {
@@ -15,7 +15,7 @@ public class NotificationController implements INotificationController {
     private NotificationRepository notificationRepository;
 
     @Override
-    public List<Notification> getAll() {
+    public Collection<Notification> getAll() {
         return notificationRepository.getAll();
     }
 

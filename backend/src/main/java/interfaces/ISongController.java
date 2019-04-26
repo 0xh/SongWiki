@@ -2,10 +2,10 @@ package interfaces;
 
 import entities.Song;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface ISongController {
-    List<Song> getAll();
+    Collection<Song> getAll();
     Song getSpecificSong(int id);
     void save(Song song);
     void update(Song song);

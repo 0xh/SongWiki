@@ -9,7 +9,7 @@ import java.util.List;
 @NamedQueries({
     @NamedQuery(name = "Playlist.getAll", query = "SELECT p FROM Playlist p LEFT JOIN FETCH p.songs"),
     @NamedQuery(name = "Playlist.findOne", query = "select p from Playlist p LEFT JOIN FETCH p.songs where p.playlistId = :id"),
-    @NamedQuery(name = "Playlist.findByUsername", query = "select p from Playlist p LEFT JOIN FETCH p.songs where p.account.username = :username")
+    @NamedQuery(name = "Playlist.findByUsername", query = "select p from Playlist p where p.account.username = :username")
 })
 public class Playlist {
     @Id

@@ -2,6 +2,7 @@ package webapp.api;
 
 import api.SongEndpoint;
 import api.config.ApplicationConfig;
+import com.google.gson.reflect.TypeToken;
 import controllers.SongController;
 import entities.*;
 import interfaces.ISongController;
@@ -25,6 +26,8 @@ import websockets.listeners.SongChangeListener;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -90,6 +93,24 @@ public class SongEndpointTest extends BaseClass {
         assertEquals(200, response.getStatus());
         assertEquals("test", song.getName());
         assertEquals("https://www.youtube.com/watch?v=TKmGU77INaM", song.getResource());
+    }
+
+    @Test
+    @InSequence(2)
+    public void getSongByPlaylistId() {
+        String id = "1";
+
+        Response response = client.target(uri).path("api").path("songs")
+                .path("playlist").path(id)
+                .request()
+                .get();
+
+        String songsJson = response.readEntity(String.class);
+        Type listType = new TypeToken<List<Song>>() {}.getType();
+        List<Song> songs = gson.fromJson(songsJson, listType);
+
+        assertEquals(200, response.getStatus());
+        assertEquals(0, songs.size());
     }
 
     @Test

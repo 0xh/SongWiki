@@ -22,6 +22,11 @@ public class SongController implements ISongController {
     }
 
     @Override
+    public Collection<Song> getSongsByPlaylistId(int id) {
+        return songRepository.findSongsByPlaylistId(id);
+    }
+
+    @Override
     public void save(Song song) {
         song.setPublishedAt(System.currentTimeMillis());
         songRepository.save(song);

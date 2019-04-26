@@ -27,6 +27,12 @@ public class SongEndpoint {
         return songController.getSpecificSong(id);
     }
 
+    @GET
+    @Path("/playlist/{id}")
+    public Collection<Song> getSongsByPlaylistId(@PathParam("id") int id) {
+        return songController.getSongsByPlaylistId(id);
+    }
+
     @POST
     public void saveSong(Song song) {
         songController.save(song);

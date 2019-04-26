@@ -21,6 +21,11 @@ public class SongRepository {
                 .setParameter("id", id).getSingleResult();
     }
 
+    public Collection<Song> findSongsByPlaylistId(int id) {
+        return entityManager.createNamedQuery("Song.findSongsByPlaylistId", Song.class)
+                .setParameter("id", id).getResultList();
+    }
+
     public void save(Song song) {
         entityManager.persist(song);
     }

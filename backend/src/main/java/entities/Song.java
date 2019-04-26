@@ -12,7 +12,9 @@ import java.util.Objects;
 @EntityListeners(SongChangeListener.class)
 @NamedQueries({
     @NamedQuery(name = "Song.getAll", query = "SELECT s FROM Song s"),
-    @NamedQuery(name = "Song.findOne", query = "select s from Song s where s.songId = :id")
+    @NamedQuery(name = "Song.findOne", query = "select s from Song s where s.songId = :id"),
+    @NamedQuery(name = "Song.findSongsByPlaylistId",
+        query = "select s from Song s inner join s.playlists playlist where playlist.playlistId = :id")
 })
 public class Song {
     @Id

@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import Playlists from '../components/Playlists';
 import StyledLink from '../components/StyledLink';
 
-const PlayListOverview = () => {
+const PlayListOverview = ({ history }) => {
   const [username, setUsername] = useState('');
   useEffect(() => {
     const token = getJWTToken();
@@ -18,7 +18,7 @@ const PlayListOverview = () => {
   return (
     <Layout>
       <h1>{username}'s playlists</h1>
-      <Playlists username={username} />
+      <Playlists username={username} history={history} />
       <StyledLink to="create-playlist">Create playlist</StyledLink>
     </Layout>
   );

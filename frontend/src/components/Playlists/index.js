@@ -4,7 +4,7 @@ import fetch from '../../utils/fetch';
 
 import { PlaylistContainer, Playlist, Heading, Description } from './styles';
 
-const Playlists = ({ username }) => {
+const Playlists = ({ username, history }) => {
   const [playlists, setPlaylists] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,14 @@ const Playlists = ({ username }) => {
     <PlaylistContainer>
       {playlists.length > 0 ? (
         playlists.map((playlist, index) => (
-          <Playlist key={index}>
+          <Playlist
+            key={index}
+            onClick={() =>
+              history.push(
+                `/playlist/${username.toLowerCase()}/${playlist.playlistId}`
+              )
+            }
+          >
             <Heading>{playlist.name}</Heading>
             <Description>{playlist.description}</Description>
           </Playlist>

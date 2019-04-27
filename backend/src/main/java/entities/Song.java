@@ -2,6 +2,7 @@ package entities;
 
 import websockets.listeners.SongChangeListener;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -57,6 +58,7 @@ public class Song {
         this.resource = resource;
     }
 
+    @JsonbTransient
     public Collection<Playlist> getPlaylists() {
         return playlists;
     }

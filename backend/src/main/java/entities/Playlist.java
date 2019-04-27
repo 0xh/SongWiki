@@ -4,6 +4,7 @@ import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 
 @Entity
 @NamedQueries({
@@ -48,7 +49,6 @@ public class Playlist {
         this.description = description;
     }
 
-    @JsonbTransient
     public Collection<Song> getSongs() {
         return songs;
     }
@@ -65,4 +65,21 @@ public class Playlist {
     }
 
     public Playlist() {}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Playlist playlist = (Playlist) o;
+        return playlistId == playlist.playlistId &&
+                Objects.equals(name, playlist.name) &&
+                Objects.equals(description, playlist.description) &&
+                Objects.equals(songs, playlist.songs) &&
+                account.equals(playlist.account);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playlistId, name, description, songs, account);
+    }
 }

@@ -24,7 +24,9 @@ For local development to work correctly between frontend and backend the package
 
 ## :page_with_curl: Available Scripts
 
-In the project directory, you can run:
+:warning: _**Warning:**_ make sure to run ```npm install``` before the first run. You need to have a generated ```node_modules``` directory!
+
+After ```npm install``` you can successfully run the following commands:
 
 ### `npm start`
 

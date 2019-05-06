@@ -66,6 +66,15 @@ public class Playlist {
 
     public Playlist() {}
 
+    @PreRemove
+    private void removePlaylistReferences() {
+        for (Song s : songs) {
+            s.getPlaylists().remove(this);
+        }
+
+        account.getPlaylists().remove(this);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

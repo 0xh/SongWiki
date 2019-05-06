@@ -5,6 +5,8 @@ import entities.Playlist;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +14,9 @@ import java.util.List;
 public class PlaylistEndpoint {
     @Inject
     private PlaylistController playlistController;
+
+    @Context
+    private UriInfo uriInfo;
 
     @GET
     public List<Playlist> getAllPlaylists() {
@@ -24,7 +29,26 @@ public class PlaylistEndpoint {
     @GET
     @Path("/{id}")
     public Playlist getSpecificPlaylist(@PathParam("id") int id) {
-        return playlistController.getSpecificPlaylist(id);
+        Playlist playlist = playlistController.getSpecificPlaylist(id);
+        if (playlist == null) throw new NotFoundException();
+
+        String selfUri = uriInfo.getBaseUriBuilder()
+                .path(PlaylistEndpoint.class)
+                .path(String.valueOf(playlist.getPlaylistId()))
+                .build()
+                .toString();
+
+        String songsUri = uriInfo.getBaseUriBuilder()
+                .path(SongEndpoint.class)
+                .path("playlist")
+                .path(String.valueOf(playlist.getPlaylistId()))
+                .build()
+                .toString();
+
+        playlist.addLink(selfUri, "self");
+        playlist.addLink(songsUri, "songs");
+
+        return playlist;
     }
 
     @GET

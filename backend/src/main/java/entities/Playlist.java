@@ -2,9 +2,7 @@ package entities;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @NamedQueries({
@@ -27,6 +25,9 @@ public class Playlist {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "username")
     private Account account;
+
+    @Transient
+    private List<Link> links = new ArrayList<>();
 
     public int getPlaylistId() {
         return playlistId;
@@ -62,6 +63,15 @@ public class Playlist {
     }
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void addLink(String link, String rel) {
+        Link newLink = new Link(link, rel);
+        links.add(newLink);
     }
 
     public Playlist() {}

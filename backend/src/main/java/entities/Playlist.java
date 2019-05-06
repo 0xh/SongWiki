@@ -21,7 +21,7 @@ public class Playlist {
 
     private String description;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Song> songs = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -38,13 +38,21 @@ public class AccountEndpoint {
         Account account = accountController.find(username);
         if (account == null) throw new NotFoundException();
 
-        String uri = uriInfo.getBaseUriBuilder()
+        String selfUri = uriInfo.getBaseUriBuilder()
                 .path(AccountEndpoint.class)
                 .path(account.getUsername())
                 .build()
                 .toString();
 
-        account.addLink(uri, "self");
+        String playlistUri = uriInfo.getBaseUriBuilder()
+                .path(PlaylistEndpoint.class)
+                .path("account")
+                .path(account.getUsername())
+                .build()
+                .toString();
+
+        account.addLink(selfUri, "self");
+        account.addLink(playlistUri, "playlists");
 
         return account;
     }

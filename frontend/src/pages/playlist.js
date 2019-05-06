@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import Layout from '../components/Layout';
 import Songlist from '../components/SongList';
+import Button from '../components/Button';
+
+import theme from '../styles/theme';
 
 import fetch from '../utils/fetch';
 
@@ -11,25 +14,33 @@ const Playlist = ({
   },
   history,
 }) => {
-  const [songs, setSongs] = useState([]);
-  const [playlistName, setPlaylistName] = useState('Playlist');
+  const [playlist, setPlaylist] = useState({});
 
   useEffect(() => {
-    fetch(`/api/songs/playlist/${playlistId}`)
+    fetch(`/api/playlists/${playlistId}`)
       .then(response => response.json())
-      .then(fetchedSongs => {
-        setSongs(fetchedSongs);
-        // Parse the name of the returned playlist
-        // As the songs of one specific playlist are fetched the names are all equal
-        // The first items are chosen to be parsed
-        setPlaylistName(fetchedSongs[0].playlists[0].name);
+      .then(fetchedPlaylist => {
+        setPlaylist(fetchedPlaylist);
       });
   }, [playlistId]);
 
+  const removePlaylist = () => {
+    fetch(`/api/playlists/${playlist.playlistId}`, null, 'DELETE', true).then(
+      () => history.push('/playlists')
+    );
+  };
+
   return (
     <Layout>
-      <h1>Playlist '{playlistName}'</h1>
-      <Songlist history={history} providedSongs={songs} />
+      <h1>Playlist '{playlist.name}'</h1>
+      <Songlist history={history} providedSongs={playlist.songs} />
+      <Button
+        color={theme.dangerColor}
+        hoverColor={theme.dangerColorDark}
+        onClick={removePlaylist}
+      >
+        Remove playlist
+      </Button>
     </Layout>
   );
 };

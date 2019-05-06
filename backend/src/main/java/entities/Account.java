@@ -40,7 +40,8 @@ public class Account {
     @OneToMany(
         mappedBy = "account",
         cascade = CascadeType.ALL,
-        orphanRemoval = true
+        orphanRemoval = true,
+        fetch = FetchType.EAGER
     )
     private Collection<Playlist> playlists = new HashSet<>();
 

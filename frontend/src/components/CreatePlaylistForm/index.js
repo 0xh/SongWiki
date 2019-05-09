@@ -79,8 +79,10 @@ const CreatePlaylistForm = ({ history }) => {
               )
             }
           >
-            {availableSongs.map(song => (
-              <SongOption value={song.songId}>{song.name}</SongOption>
+            {availableSongs.map((song, index) => (
+              <SongOption key={index} value={song.songId}>
+                {song.name}
+              </SongOption>
             ))}
           </Field>
           <ErrorMessage name="songs" component="span" />

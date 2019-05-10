@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "formik": "^1.5.2",
     "jwt-decode": "^2.2.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-notification": "^6.8.4",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-youtube": "^7.9.0",

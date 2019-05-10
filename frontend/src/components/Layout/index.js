@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Notification } from 'react-notification';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import { NotificationContext } from '../../utils/notificationContext';
 
@@ -21,11 +21,12 @@ const Layout = ({ children }) => {
       <Navigation />
       <ContentWrapper>{children}</ContentWrapper>
       <Footer />
-      <Notification
-        isActive={notificationMessage !== ''}
+      <Snackbar
         message={notificationMessage}
-        dismissAfter={3400}
-        onDismiss={() => setNotificationMessage('')}
+        autoHideDuration={3400}
+        open={notificationMessage !== ''}
+        onClose={() => setNotificationMessage('')}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       />
     </SiteWrapper>
   );

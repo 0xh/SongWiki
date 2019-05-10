@@ -24,4 +24,4 @@ const PlayListOverview = ({ history }) => {
   );
 };
 
-export default PlayListOverview;
+export default React.memo(PlayListOverview);

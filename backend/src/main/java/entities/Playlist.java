@@ -1,10 +1,13 @@
 package entities;
 
+import websockets.listeners.PlaylistChangeListener;
+
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
+@EntityListeners(PlaylistChangeListener.class)
 @NamedQueries({
     @NamedQuery(name = "Playlist.getAll", query = "SELECT p FROM Playlist p LEFT JOIN FETCH p.songs"),
     @NamedQuery(name = "Playlist.findOne", query = "select p from Playlist p LEFT JOIN FETCH p.songs where p.playlistId = :id"),

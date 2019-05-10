@@ -24,7 +24,7 @@ public class PushContext {
     }
 
     public void add(String username, Session session) {
-        if (!sessions.containsValue(session)) sessions.put(username, session);
+        sessions.put(username, session);
     }
 
     public void remove(String username) {

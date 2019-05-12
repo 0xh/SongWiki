@@ -58,6 +58,19 @@ public class AccountEndpoint {
     }
 
     @POST
+    @Path("/check-password")
+    public boolean checkPassword(Account givenAccount) {
+        if (givenAccount.getPassword() == null) return false;
+
+        String givenPassword = passwordHasher.hash(givenAccount.getPassword());
+        Account actualAccount = accountController.find(givenAccount.getUsername());
+
+        if (actualAccount == null) return false;
+
+        return givenPassword.equals(actualAccount.getPassword());
+    }
+
+    @POST
     public void saveAccount(Account account) {
         String hashedPassword = passwordHasher.hash(account.getPassword());
         account.setPassword(hashedPassword);

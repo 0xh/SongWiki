@@ -1,51 +1,50 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 
+import fetch from '../../utils/fetch';
+
 import { Label, Field, Button } from '../../styles/formikStyle';
-import { fetchJWT } from '../../utils/jwt';
-import { AuthenticationContext } from '../../utils/authenticationContext';
 
-const LoginForm = ({ history }) => {
-  const { setAuthenticated } = useContext(AuthenticationContext);
+const LoginForm = ({ setLoggedInUser }) => (
+  <Formik
+    initialValues={{
+      username: '',
+      password: '',
+    }}
+    onSubmit={values => {
+      fetch(
+        `/api/accounts/check-password`,
+        {
+          username: values.username,
+          password: values.password,
+        },
+        'POST'
+      )
+        .then(response => response.json())
+        .then(isCorrectLogin => {
+          if (isCorrectLogin)
+            setLoggedInUser({
+              username: values.username,
+              password: values.password,
+            });
+        });
+    }}
+    render={({ isSubmitting }) => (
+      <Form>
+        <Label htmlFor="username">Username</Label>
+        <Field type="text" name="username" />
+        <ErrorMessage name="username" component="span" />
 
-  const onFormSubmit = (values, { setSubmitting }) => {
-    setSubmitting(true);
-    fetchJWT(values.username, values.password);
-    setAuthenticated(true);
-    setSubmitting(false);
+        <Label htmlFor="password">Password</Label>
+        <Field type="password" name="password" />
+        <ErrorMessage name="password" component="span" />
 
-    history.push({
-      pathname: '/two-factor-auth',
-      state: { name: values.username, initialSetup: false },
-    });
-  };
-
-  return (
-    <Formik
-      initialValues={{
-        username: '',
-        password: '',
-      }}
-      onSubmit={(values, { setSubmitting, setErrors }) =>
-        onFormSubmit(values, { setSubmitting, setErrors })
-      }
-      render={({ isSubmitting }) => (
-        <Form>
-          <Label htmlFor="username">Username</Label>
-          <Field type="text" name="username" />
-          <ErrorMessage name="username" component="span" />
-
-          <Label htmlFor="password">Password</Label>
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="span" />
-
-          <Button type="submit" disabled={isSubmitting}>
-            Log in
-          </Button>
-        </Form>
-      )}
-    />
-  );
-};
+        <Button type="submit" disabled={isSubmitting}>
+          Log in
+        </Button>
+      </Form>
+    )}
+  />
+);
 
 export default LoginForm;

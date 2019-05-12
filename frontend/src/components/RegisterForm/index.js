@@ -1,27 +1,21 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 
-import { fetchJWT } from '../../utils/jwt';
 import fetch from '../../utils/fetch';
 
 import { Label, Field, Button } from '../../styles/formikStyle';
-import { AuthenticationContext } from '../../utils/authenticationContext';
 
-const RegisterForm = ({ history }) => {
-  const { setAuthenticated } = useContext(AuthenticationContext);
-
+const RegisterForm = ({ setPersistedUser }) => {
   const onFormSubmit = (values, { setSubmitting, setErrors }) => {
     setSubmitting(true);
 
     fetch('/api/accounts', values, 'POST')
       .then(response => {
         if (response.ok) {
-          fetchJWT(values.username, values.password);
           setSubmitting(false);
-          setAuthenticated(true);
-          history.push({
-            pathname: '/two-factor-auth',
-            state: { name: values.username, initialSetup: true },
+          setPersistedUser({
+            username: values.username,
+            password: values.password,
           });
         } else {
           throw new Error(response.statusText);

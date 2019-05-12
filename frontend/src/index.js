@@ -16,7 +16,6 @@ import theme from './styles/theme';
 import Home from './pages/home';
 import Register from './pages/register';
 import Login from './pages/login';
-import TwoFactorAuth from './pages/twoFactorAuth';
 import AddSong from './pages/addSong';
 import Song from './pages/song';
 import Playlist from './pages/playlist';
@@ -54,7 +53,6 @@ const AppRouter = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/two-factor-auth" component={TwoFactorAuth} />
             <Route exact path="/add-song" component={AddSong} />
             <Route exact path="/song" component={Song} />
             <Route

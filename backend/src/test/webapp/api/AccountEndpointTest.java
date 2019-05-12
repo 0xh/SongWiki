@@ -1,11 +1,14 @@
 package webapp.api;
 
 import api.AccountEndpoint;
+import api.PlaylistEndpoint;
 import api.config.ApplicationConfig;
 import controllers.AccountController;
+import controllers.PlaylistController;
 import entities.*;
 import interceptors.LoggingInterceptor;
 import interfaces.IAccountController;
+import interfaces.IPlaylistController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
@@ -16,12 +19,16 @@ import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import repositories.AccountRepository;
+import repositories.PlaylistRepository;
 import utils.PasswordHasher;
 import webapp.api.data.AccountDataGenerator;
 import webapp.api.data.DataGenerator;
 import websockets.AccountSocket;
+import websockets.PlaylistSocket;
 import websockets.SongSocket;
+import websockets.context.PushContext;
 import websockets.listeners.AccountChangeListener;
+import websockets.listeners.PlaylistChangeListener;
 import websockets.listeners.SongChangeListener;
 
 import javax.persistence.EntityManager;
@@ -29,7 +36,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 @RunWith(Arquillian.class)
 public class AccountEndpointTest extends BaseClass {
@@ -59,6 +66,13 @@ public class AccountEndpointTest extends BaseClass {
                 .addClass(Link.class)
                 .addClass(Role.class)
                 .addClass(Playlist.class)
+                .addClass(PlaylistChangeListener.class)
+                .addClass(PlaylistSocket.class)
+                .addClass(PlaylistEndpoint.class)
+                .addClass(PlaylistController.class)
+                .addClass(PlaylistRepository.class)
+                .addClass(IPlaylistController.class)
+                .addClass(PushContext.class)
                 .addClass(Song.class)
                 .addClass(SongChangeListener.class)
                 .addClass(SongSocket.class)
@@ -109,7 +123,6 @@ public class AccountEndpointTest extends BaseClass {
         // Expect a successful database call with the predefined entries
         assertEquals(200, response.getStatus());
         assertEquals("test", fetchedAccount.getUsername());
-        assertEquals("testPassword", fetchedAccount.getPassword());
         assertEquals("test@test.nl", fetchedAccount.getEmail());
         assertEquals(21, fetchedAccount.getAge());
     }

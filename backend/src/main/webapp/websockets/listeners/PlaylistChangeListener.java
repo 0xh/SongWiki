@@ -17,7 +17,9 @@ public class PlaylistChangeListener {
     @PostPersist
     public void onChange(Playlist playlist) {
         Account account = playlist.getAccount();
-        pushContext.send(account.getUsername(), "Playlist with name " + playlist.getName() + " added!");
+        if (account != null) {
+            pushContext.send(account.getUsername(), "Playlist with name " + playlist.getName() + " added!");
+        }
     }
 
 }

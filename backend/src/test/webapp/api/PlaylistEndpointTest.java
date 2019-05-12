@@ -1,14 +1,17 @@
 package webapp.api;
 
 import api.PlaylistEndpoint;
+import api.SongEndpoint;
 import api.config.ApplicationConfig;
 import com.google.gson.reflect.TypeToken;
 import controllers.AccountController;
 import controllers.PlaylistController;
+import controllers.SongController;
 import entities.*;
 import interceptors.LoggingInterceptor;
 import interfaces.IAccountController;
 import interfaces.IPlaylistController;
+import interfaces.ISongController;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
@@ -20,10 +23,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import repositories.AccountRepository;
 import repositories.PlaylistRepository;
+import repositories.SongRepository;
 import webapp.api.data.DataGenerator;
 import webapp.api.data.PlaylistDataGenerator;
 import websockets.AccountSocket;
+import websockets.PlaylistSocket;
+import websockets.SongSocket;
+import websockets.context.PushContext;
 import websockets.listeners.AccountChangeListener;
+import websockets.listeners.PlaylistChangeListener;
 import websockets.listeners.SongChangeListener;
 
 import javax.ws.rs.client.Entity;
@@ -61,6 +69,14 @@ public class PlaylistEndpointTest extends BaseClass {
                 .addClass(LoggingInterceptor.class)
                 .addClass(Song.class)
                 .addClass(SongChangeListener.class)
+                .addClass(SongSocket.class)
+                .addClass(SongEndpoint.class)
+                .addClass(SongController.class)
+                .addClass(SongRepository.class)
+                .addClass(ISongController.class)
+                .addClass(PlaylistChangeListener.class)
+                .addClass(PlaylistSocket.class)
+                .addClass(PushContext.class)
                 .addClass(DataGenerator.class)
                 .addClass(PlaylistDataGenerator.class)
                 .addAsLibraries(dependencies)

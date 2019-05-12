@@ -81,11 +81,13 @@ public class Playlist {
 
     @PreRemove
     private void removePlaylistReferences() {
+        if (songs == null) return;
         for (Song s : songs) {
-            s.getPlaylists().remove(this);
+            if (s.getPlaylists() != null) s.getPlaylists().remove(this);
         }
 
-        account.getPlaylists().remove(this);
+        if (account != null)
+            account.getPlaylists().remove(this);
     }
 
     @Override

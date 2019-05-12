@@ -19,8 +19,11 @@ import repositories.SongRepository;
 import webapp.api.data.DataGenerator;
 import webapp.api.data.SongDataGenerator;
 import websockets.AccountSocket;
+import websockets.PlaylistSocket;
 import websockets.SongSocket;
+import websockets.context.PushContext;
 import websockets.listeners.AccountChangeListener;
+import websockets.listeners.PlaylistChangeListener;
 import websockets.listeners.SongChangeListener;
 
 import javax.ws.rs.client.Entity;
@@ -48,6 +51,9 @@ public class SongEndpointTest extends BaseClass {
                 .addClass(SongChangeListener.class)
                 .addClass(SongSocket.class)
                 .addClass(Playlist.class)
+                .addClass(PlaylistChangeListener.class)
+                .addClass(PlaylistSocket.class)
+                .addClass(PushContext.class)
                 .addClass(Account.class)
                 .addClass(Link.class)
                 .addClass(Role.class)

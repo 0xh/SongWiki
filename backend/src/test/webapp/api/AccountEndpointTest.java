@@ -142,6 +142,35 @@ public class AccountEndpointTest extends BaseClass {
 
     @Test
     @InSequence(3)
+    public void checkPassword() {
+        Account correctAccount = new Account();
+        correctAccount.setUsername("test");
+        correctAccount.setPassword("testPassword");
+
+        Response correctResponse = client.target(uri).path("api").path("accounts")
+                .path("check-password")
+                .request()
+                .post(Entity.json(correctAccount));
+
+        boolean correctData = gson.fromJson(correctResponse.readEntity(String.class), boolean.class);
+
+        Account incorrectAccount = new Account();
+        correctAccount.setUsername("test");
+        correctAccount.setPassword("wrong");
+
+        Response incorrectResponse = client.target(uri).path("api").path("accounts")
+                .path("check-password")
+                .request()
+                .post(Entity.json(incorrectAccount));
+
+        boolean incorrectData = gson.fromJson(incorrectResponse.readEntity(String.class), boolean.class);
+
+        assertTrue(correctData);
+        assertFalse(incorrectData);
+    }
+
+    @Test
+    @InSequence(3)
     public void saveAccount() {
         Account account = new Account();
         account.setUsername("new");

@@ -217,7 +217,7 @@ public class AccountEndpointTest extends BaseClass {
 
         client.target(uri).path("api").path("accounts")
                 .request()
-                .put(Entity.json(account));
+                .post(Entity.json(account));
 
         Response response = client.target(uri).path("api").path("accounts")
                 .path(userName)
@@ -247,7 +247,7 @@ public class AccountEndpointTest extends BaseClass {
 
         client.target(uri).path("api").path("accounts")
                 .request()
-                .put(Entity.json(account));
+                .post(Entity.json(account));
 
         Response response = client.target(uri).path("api").path("accounts")
                 .path(userName)
@@ -281,9 +281,6 @@ public class AccountEndpointTest extends BaseClass {
         assertEquals(204, response.getStatus());
     }
 
-    /**
-     * TODO: fix 204 response instead of 500 due to merge of unknown item which creates a new item
-     */
     @Test
     @InSequence(4)
     public void updateNonExistentAccount() {
@@ -299,7 +296,7 @@ public class AccountEndpointTest extends BaseClass {
 
         // Expect a 500: Server Error as the specified account doesn't exist
         // It is successful though, which is why it falls in the 200 range
-        assertEquals(500, response.getStatus());
+        assertEquals(404, response.getStatus());
     }
 
     @Test

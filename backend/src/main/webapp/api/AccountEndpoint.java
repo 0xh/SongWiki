@@ -80,9 +80,11 @@ public class AccountEndpoint {
     @PUT
     @JWTTokenNeeded(roles = { Role.user, Role.admin })
     public void updateAccount(Account account) {
+        if (account == null) throw new NotFoundException();
         String hashedPassword = passwordHasher.hash(account.getPassword());
         account.setPassword(hashedPassword);
-        accountController.update(account);
+        if (accountController.find(account.getUsername()) != null) accountController.update(account);
+        else throw new NotFoundException();
     }
 
     @DELETE
